@@ -1,0 +1,12 @@
+{
+  "name": "sample-server",
+  "version": "0.0.1",
+  "description": "Sample Web Server",
+  "main": "index.js",
+  "engine": "10.1.0",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "EN",
+  "license": "MIT"
+}
