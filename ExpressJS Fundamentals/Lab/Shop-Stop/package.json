@@ -1,0 +1,15 @@
+{
+  "name": "shop-stop",
+  "version": "1.0.0",
+  "description": "Shop Stop - The Lab",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "EN",
+  "license": "MIT",
+  "devDependencies": {
+    "semistandard": "^12.0.1",
+    "standard": "^11.0.1"
+  }
+}
