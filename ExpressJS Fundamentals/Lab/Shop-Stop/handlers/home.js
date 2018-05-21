@@ -29,19 +29,15 @@ module.exports = (req, res) => {
 
       let queryData = qs.parse(url.parse(req.url).query);
       let filteringString = queryData.query;
+
       /* GET THE PRODUCTS FROM THE DATABASE */
       let products = database.products.getAll();
       let content = '';
+
       // CASE-INSENSITIVE SEARCHING
       if (filteringString) {
         filteringString = filteringString.toLowerCase();
         products = database.products.findByName(filteringString);
-        /*
-        products = products.filter(p => {
-          let productName = p.name.toLowerCase();
-          return productName.includes(filteringString);
-        });
-        */
       }
 
       for (let product of products) {
@@ -52,6 +48,7 @@ module.exports = (req, res) => {
           <p>${product.description}</p>
          </div>`;
       }
+      
       /* ACTS LIKE PRIMITIVE TEMPLATING ENGINE */
       let html = data.toString().replace('{content}', content);
       res.writeHead(200, {
