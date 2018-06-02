@@ -92,6 +92,7 @@ async function show (req, res) {
     res.end();
   }
 
+  movies = movies.sort((a, b) => a.year - b.year);
   let moviesHtml = [];
 
   for (let movie of movies) {
