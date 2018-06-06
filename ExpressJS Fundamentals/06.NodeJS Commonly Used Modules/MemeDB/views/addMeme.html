@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/public/css/main.css" />
+
+    <script src="/public/scripts/jquery-3.3.1.js"></script>
+    <script src="/public/scripts/meme.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="inner">
+            <nav>
+                <a href="/" class="logo"><img class="logo" src="/public/images/nodeLogo.png" alt="nodeLogo"></a>
+                <input type="checkbox" id="nav" /><label for="nav"></label>
+                <ul>
+                    <li><a href="/addMeme">Add Meme</a></li>
+                    <li><a href="/viewAllMemes">View All Memes</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <h1>Add New Movie</h1>
+    <div class="container">
+        <form action="/addMeme" enctype=multipart/form-data method="POST">
+            <label for="memeTitle">Title</label>
+            <input type="text" id="memeTitle" name="memeTitle" placeholder="The title of the movie">
+
+            <label for="memePoster">Poster URL</label>
+            <input type="file" id="memePoster" name="meme" placeholder="Link to a poster">
+
+            <input type="radio" name='status' id='status' checked value="public"> public
+            <input type="radio" name='status' id='private-status' value="private"> private
+            <label for="memeDescription">Movie description</label>
+            <textarea id="memeDescription" name="memeDescription" placeholder="Movie description" rows="10" cols="10"></textarea>
+
+            <input type="submit" value="Submit" id="submit-btn">
+
+        </form>
+    </div>
+    <div id="replaceMe">{{replaceMe}}</div>
+</body>
+
+</html>

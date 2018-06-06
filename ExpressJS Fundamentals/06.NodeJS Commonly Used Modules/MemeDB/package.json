@@ -1,0 +1,19 @@
+{
+  "name": "memedb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "EN",
+  "license": "ISC",
+  "dependencies": {
+    "@types/nw.gui": "0.0.20",
+    "formidable": "^1.2.1",
+    "g": "^2.0.1",
+    "mime": "^2.3.1",
+    "request": "^2.87.0",
+    "shortid": "^2.2.8"
+  }
+}
