@@ -74,6 +74,18 @@ async function postMemeData (req, res, allGenres) {
     let notSelected = allGenres.slice(0);
     let selectedIndex = allGenres.indexOf(selectedGenre);
 
+    // If the genre is missing, send a message to the user
+    if (selectedGenre.length === 0) {
+      res.render('add-meme', {
+        title: memeTitle,
+        description: memeDescription,
+        genres: allGenres,
+        message: 'Cannot send meme with no genre',
+        'element-id': 'error'
+      });
+      return;
+    }
+
     if (selectedIndex === -1) {
       res.render('forbidden', {
         message: `What you've done is forbidden... Adding genres is not allowed!!!`,
@@ -102,18 +114,6 @@ async function postMemeData (req, res, allGenres) {
         genres: allGenres,
         defaultGenre: selectedGenre,
         message: 'Cannot send meme with no image',
-        'element-id': 'error'
-      });
-      return;
-    }
-
-    // If the genre is missing, send a message to the user
-    if (selectedGenre.length === 0) {
-      res.render('add-meme', {
-        title: memeTitle,
-        description: memeDescription,
-        genres: allGenres,
-        message: 'Cannot send meme with no genre',
         'element-id': 'error'
       });
       return;
