@@ -1,0 +1,33 @@
+const express = require('express');
+const handlebars = require('express-handlebars');
+const app = express();
+const port = 5000;
+
+// Set up the view engine -> Handlebars (in this case)
+app.engine('.hbs', handlebars({
+  extname: '.hbs'
+}));
+app.set('view engine', '.hbs');
+
+
+
+const publicFilesPath = path.join(__dirname, 'public');
+ // Specify how to serve the static files (in this case in a folder, called 'public')
+app.use('/public', express.static(publicFilesPath));
+
+app.get('/', (req, res) => {
+    res.render('index', {
+      'title': 'Hello, Handlerbars!'
+    });
+  });
+
+ app.get('/greet', (req, res) => {
+    res.render('index', {
+      'names': [
+        { name: 'Pesho', age: 21},
+        { name:  'Maria', age: 17},
+      ]
+    });
+ app.listen(port, () => {
+    console.log(`The app is running on port ${port}...`);
+  });

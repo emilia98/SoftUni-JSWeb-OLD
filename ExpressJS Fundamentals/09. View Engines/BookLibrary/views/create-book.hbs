@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Book Library</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css" />
+     <script src="/static/scripts/jquery-3.3.1.js"></script>
+    <script src="/static/scripts/api.js"></script>
+</head>
+
+<body>
+    {{>header}}
+    <h1>Add New Book</h1>
+    <!--
+    <div id="errBox"><h2 id="errMsg">Please fill all fields</h2></div>
+    <div id="succssesBox"><h2 id="succssesMsg">Book Added</h2></div>
+    -->
+    <div class="container">
+        <form action="/books" method="POST" enctype="multipart/form-data">
+            <label for="bookTitle">Title</label>
+            <input type="text" id="bookTitle" name="bookTitle" placeholder="The title of the book">
+
+            <label for="bookYear">Year</label>
+            <input type="text" id="bookYear" name="bookYear" placeholder="Year of release">
+
+            <label for="bookPoster">Poster URL</label>
+            <input type="file" id="bookPoster" name="bookPoster">
+
+            <label for="bookAuthor">Book author</label>
+            <input type="text" id="bookAuthor" name="bookAuthor" placeholder="Book author">
+
+            <input type="submit" value="Submit" id="submit-btn">
+
+        </form>
+    </div>
+</body>
+
+</html>

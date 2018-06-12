@@ -1,0 +1,6 @@
+/books/ -> get (all)
+/books/ -> post
+
+/books/:id -> get (details)
+/books/:id -> put (update entry)
+/books/:id -> delete (remove entry)
