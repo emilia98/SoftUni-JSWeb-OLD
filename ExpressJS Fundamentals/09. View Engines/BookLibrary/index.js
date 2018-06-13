@@ -9,17 +9,19 @@ const port = 5000;
 
 const db = require('./config/dbConfig');
 const Book = require('./models/Book');
+const Author = require('./models/Author');
 
-let router = require('./controllers/books-controller');
+ // Set up the golder, where to search for static content
+ const publicFilesPath = path.normalize(
+  path.join(__dirname, 'public')
+);
+app.use('/public', express.static(publicFilesPath));
 
 db.then(() => {
   console.log('Connected to DB...');
 
-  // Set up the golder, where to search for static content
-  const publicFilesPath = path.normalize(
-    path.join(__dirname, 'public')
-  );
-  app.use('/static', express.static(publicFilesPath));
+  let router = require('./controllers/books-controller');
+ 
 
   // Set up the view engine -> Handlebars (in this case)
   app.engine('.hbs', hbs({
@@ -30,20 +32,18 @@ db.then(() => {
   
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true })); // for parsing 
-  
-  
+
   app.use('/', router);
-  
-  
+
   app.get('/', (req, res) => {
-      res.render('home');
+    console.log(req);
+    res.render('home');
   });
-  
+
   app.get('/add/book', (req, res) => {
     res.render('create-book');
   });
-  
-  
+
   app.get('/home', (req, res) => {
       // Send Data: 
       // res.json({message: 'Hello from API!'});

@@ -4,7 +4,7 @@ const ObjectId = mongoose.Schema.ObjectId;
 let bookSchema = mongoose.Schema({
   title: {type: String, required: true},
   releaseYear: {type: Number, required: true},
-  author: [{type: ObjectId}],
+  authors: [{type: ObjectId}],
   imageSrc: {type: String, required: true}
 });
 

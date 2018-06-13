@@ -1,8 +1,43 @@
 $(() => {
     let submitBtn = $('#submit-btn');
-    let homeBtn = $('#home-btn');
-    let div = $('<h1>');
-    div.attr('id', 'cm-message');
+    //let homeBtn = $('#home-btn');
+    //let div = $('<h1>');
+
+    let successBox = $('<div>');
+    let successMsg = $('<h2>');
+    successBox.attr('id', 'succssesBox');
+    successMsg.attr('id', 'succssesMsg');
+    successMsg.appendTo(successBox);
+
+    //div.attr('id', 'cm-message');
+
+    let titleMsg = $('#title-msg');
+    let yearMsg = $('#year-msg');
+    let authorMsg = $('#author-msg');
+    let imageMsg = $('#image-msg');
+
+    //let timer;
+
+    function redirectTimer() {
+        return setTimeout(() => {
+            //window.location.href = '/books';
+            window.location.href = '/books';
+            /*
+            $.ajax({
+                url: '/books',
+                type: 'GET',
+                //dataType: 'json', // added data type
+                success: function () {
+                    window.location.href = '/books';
+                    //window.location.href = '/books',
+                },
+                error: (err) => {
+                  window.location.href = '/not-found';
+                  console.log(err);
+                }
+            });*/
+        }, 2000);
+    }
 
     /*
     submitBtn.click((e) => {
@@ -40,12 +75,37 @@ $(() => {
       enctype: 'multipart/form-data',
       processData: false,
       success: function (response) {
-        console.log(response);
+          $(successMsg).text(response.message);
+          successBox.insertAfter($('header'));
+          redirectTimer();
+          
       },
       error: (err) => {
-        div.text(err.responseJSON.message);
-        div.appendTo($('body'));
-        console.log(err.responseJSON.message);
+        let messages = err.responseJSON;
+
+        if (messages.title) {
+            titleMsg.text('*' + messages.title);
+        } else {
+            titleMsg.text('');
+        }
+        
+        if (messages.author) {
+            authorMsg.text('*' + messages.author);
+        } else {
+            authorMsg.text('');
+        }
+
+        if (messages.year) {
+            yearMsg.text('*' + messages.year);
+        } else {
+            yearMsg.text('');
+        }
+
+        if(messages.image) {
+            imageMsg.text('*' + messages.image);
+        } else {
+            imageMsg.text('');
+        }
       }
     });
   });

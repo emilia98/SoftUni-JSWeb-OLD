@@ -261,3 +261,8 @@ input[type=submit]:hover {
 #cm-message {
     color: #45a049;
 }
+
+.error-msg {
+    color: red;
+    padding: 1%;
+}
