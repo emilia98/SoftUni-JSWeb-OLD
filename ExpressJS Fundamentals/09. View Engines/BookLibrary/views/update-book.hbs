@@ -11,30 +11,26 @@
 
 <body>
     {{>header}}
-    
-    <h1>Add New Book</h1>
-    <span class="error-msg">{{messages.title}}</span>
+    <h1>Update Book</h1>
 
     <div class="container">
-        <form action="/books" method="POST" enctype="multipart/form-data">
+        <form action="/books/{{book.id}}" method="">
 
             <div class="error-msg" id="title-msg"></div>
             <label for="bookTitle">Title</label>
-            <input type="text" id="bookTitle" name="bookTitle" placeholder="The title of the book">
+            <input type="text" id="bookTitle" name="bookTitle" placeholder="The title of the book" value="{{book.title}}">
 
             <div class="error-msg" id="year-msg"></div>
             <label for="bookYear">Year</label>
-            <input type="text" id="bookYear" name="bookYear" placeholder="Year of release">
-
-            <div class="error-msg" id="image-msg"></div>
-            <label for="bookPoster">Poster URL</label>
-            <input type="file" id="bookPoster" name="bookPoster"> 
+            <input type="text" id="bookYear" name="bookYear" placeholder="Year of release" value="{{book.year}}">
             
+            <h2>Image cannot be updated!</h2>
             <div class="error-msg" id="author-msg"></div>
             <label for="bookAuthor">Book author</label>
-            <input type="text" id="bookAuthor" name="bookAuthor" placeholder="Book author">
+            <input type="text" id="bookAuthor" name="bookAuthor" placeholder="Book author" value="{{book.authors}}">
 
-            <input type="submit" value="Submit" id="submit-btn">
+            <input type="submit" value="Submit" id="update-btn">
+
         </form>
     </div>
 </body>

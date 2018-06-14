@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Book Library</title>
+    <link rel="stylesheet" type="text/css" href="/public/css/main.css" />
+    <script src="/public/scripts/jquery-3.3.1.js"></script>
+    <script src="/public/scripts/api.js"></script>
+</head>
+
+<body>
+    {{>header}}
+    
+    <div class="content">
+        <img src="{{book.imageSrc}}" alt=""/>
+        <div id="book-title">
+            <span>Title: </span>
+            <h3>{{book.title}}</h3>
+        </div>
+        
+        <div id="book-authors">
+            <span>By: </span>
+            {{#each authors}}
+              <a href="/author/{{this.id}}">{{this.name}}</a>
+            {{/each}}
+        </div>
+        <div> 
+            <span>Release Year: </h3>
+            <span> {{book.releaseYear}}</span>
+        </div>
+        
+        <div class="buttons">
+            <a href="/edit/book/{{book.id}}"><button class="button" id="update">Update Book</button></a>
+            <a href="/books/{{book.id}}"><button class="button" id="delete-btn">Delete Book</button></a>
+        </div>
+    </div>    
+</body>
+
+</html>

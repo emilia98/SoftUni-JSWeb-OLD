@@ -5,38 +5,22 @@
     <meta charset="UTF-8">
     <title>Book Library</title>
     <link rel="stylesheet" type="text/css" href="/public/css/main.css" />
+     <script src="/public/scripts/jquery-3.3.1.js"></script>
+    <script src="/public/scripts/api.js"></script>
 </head>
 
 <body>
 
     {{>header}}
-     
-     <form action="/books">
-     <input type="text" name="search" id="search"/>
-     <input type="text" name="title" id="title"/>
-     <input type="submit"/>
-     </form>
     <h1>Here are your books</h1>
     <div class="container">
         {{#each books}}
         <div class="book">
-            <a href="books/{{_id}}"><img class="bookPoster" src="{{imageSrc}}" /></a>
+            <a href="/books/{{_id}}"><img class="bookPoster" src="{{imageSrc}}" /></a>
         </div>
         {{else}}
         <div>Database is empty</div>
         {{/each}}
-        
-        <!--
-        <div class="book">
-            <a href="#"><img class="bookPoster" src="/static/images/book2.png" /></a>
-        </div>
-        <div class="book">
-            <a href="#"><img class="bookPoster" src="/static/images/book3.png" /></a>
-        </div>
-        <div class="book">
-            <a href="#"><img class="bookPoster" src="/static/images/book4.png" /></a>
-        </div>
-        -->
     </div>
 </body>
 

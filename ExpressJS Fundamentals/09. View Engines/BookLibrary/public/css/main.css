@@ -266,3 +266,37 @@ input[type=submit]:hover {
     color: red;
     padding: 1%;
 }
+
+.content div{
+    font-weight: bold;
+    margin: 2%;
+}
+
+#book-title h3{
+    display: inline-block;
+}
+
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 2%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 1%;
+    cursor: pointer;
+}
+
+#delete-btn {
+    background-color: #ce2e3e;
+}
+
+#update {
+    background-color: #a138e2;
+}
+
+h2{
+    text-align: center;
+}
