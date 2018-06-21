@@ -19,6 +19,7 @@ module.exports.addGet = (req, res) => {
 module.exports.addPost = (req, res) => {
   let product = req.body;
   product.image = '\\' + req.file.path;
+  product.creator = req.user._id;
 
   let categoryId = product.category;
 
@@ -38,22 +39,35 @@ module.exports.addPost = (req, res) => {
     });
 };
 
-module.exports.deleteGet = (req, res) => {
+module.exports.deleteGet = async (req, res) => {
   let id = req.params.id;
+  let foundProduct;
 
-  Product.findById(id).then(foundProduct => {
-    if (!foundProduct) {
-      res.redirect(`/?error=${encodeURIComponent('Product was not found!')}`);
-      return;
-    }
-
-    res.render('product/delete', {
-      product: foundProduct
-    });
-  }).catch(err => {
+  try {
+    foundProduct = await Product.findById(id);
+  } catch (err) {
     if (err) {
       res.redirect(`/?error=${encodeURIComponent('Product was not found!')}`);
     }
+  }
+
+  if (!foundProduct) {
+    res.redirect(`/?error=${encodeURIComponent('Product was not found!')}`);
+    return;
+  }
+
+  if (!foundProduct.creator.equals(req.user._id) && !req.user.roles.includes('Admin')) {
+    res.render('forbidden');
+    return;
+  }
+
+  if (foundProduct.buyer) {
+    res.redirect(`/?error=${encodeURIComponent('Product has been bought!')}`);
+    return;
+  }
+
+  res.render('product/delete', {
+    product: foundProduct
   });
 };
 
@@ -63,6 +77,16 @@ module.exports.deletePost = async (req, res) => {
 
   if (!foundProduct) {
     res.redirect(`/?error=${encodeURIComponent('Product was not found!')}`);
+    return;
+  }
+
+  if (!foundProduct.creator.equals(req.user._id) && !req.user.roles.includes('Admin')) {
+    res.render('forbidden');
+    return;
+  }
+
+  if (foundProduct.buyer) {
+    res.redirect(`/?error=${encodeURIComponent('Product has been bought!')}`);
     return;
   }
 
@@ -121,6 +145,16 @@ module.exports.editGet = async (req, res) => {
     return;
   }
 
+  if (!foundProduct.creator.equals(req.user._id) && !req.user.roles.includes('Admin')) {
+    res.render('forbidden');
+    return;
+  }
+
+  if (foundProduct.buyer) {
+    res.redirect(`/?error=${encodeURIComponent('Product has been bought!')}`);
+    return;
+  }
+
   let categories = await Category.find();
 
   res.render('product/edit', {
@@ -146,6 +180,15 @@ module.exports.editPost = async (req, res) => {
     return;
   }
 
+  if (!product.creator.equals(req.user._id) && !req.user.roles.includes('Admin')) {
+    res.render('forbidden');
+    return;
+  }
+
+  if (product.buyer) {
+    res.redirect(`/?error=${encodeURIComponent('Product has been bought!')}`);
+    return;
+  }
   product.name = editedProduct.name;
   product.description = editedProduct.description;
   product.price = editedProduct.price;
@@ -199,15 +242,44 @@ module.exports.buyGet = async (req, res) => {
   try {
     product = await Product.findById(id);
   } catch (err) {
-    res.redirect(`/?error=${encodeURIComponent('Category does not exist!')}`);
+    res.redirect(`/?error=${encodeURIComponent('Product does not exist!')}`);
     return;
   }
-   
+
   if (!product) {
-    res.redirect(`/?error=${encodeURIComponent('Category does not exist!')}`);
+    res.redirect(`/?error=${encodeURIComponent('Product does not exist!')}`);
     return;
   }
   res.render('product/buy', {
     product: product
   });
+};
+
+module.exports.buyPost = async (req, res) => {
+  let id = req.params.id;
+  let product;
+
+  try {
+    product = await Product.findById(id);
+  } catch (err) {
+    res.redirect(`/?error=${encodeURIComponent('Product does not exist!')}`);
+    return;
+  }
+
+  if (!product) {
+    res.redirect(`/?error=${encodeURIComponent('Product does not exist!')}`);
+    return;
+  }
+
+  if (product.buyer) {
+    res.redirect(`/?error=${encodeURIComponent('The product is already bought!')}`);
+    return;
+  }
+
+  product.buyer = req.user._id;
+  await product.save();
+
+  req.user.boughtProducts.push(product._id);
+  await req.user.save();
+  res.redirect('/');
 };

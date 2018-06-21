@@ -4,7 +4,7 @@ module.exports.index = (req, res) => {
   let queryData = req.query;
   let filteringString = queryData.query;
 
-  Product.find().populate('category')
+  Product.find({buyer: null}).populate('category')
     .then(products => {
       // CASE-INSENSITIVE SEARCHING
       if (filteringString) {
