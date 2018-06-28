@@ -1,0 +1,66 @@
+class ButtonClicked extends Compnent {
+constructor(props) {
+super(props);
+
+this.onButtonClicked = this.onButtonClicked.bind(this);
+}
+ onButtonClicked = (event) => {
+   console.log(this.props.name);
+
+this.setState({
+   // This will point to null, because events are pooled and each event will
+   // be deleted, after its work has been done
+  value: event,
+// This is valid, because we take a concrete value from the event, not the event itself
+anotherValue: event.target.value
+});
+ }
+ render() {
+   return (
+    <button onClick={this.onButtonClicked}> Click me </button>
+   )
+ }
+}
+
+
+
+class ButtonClicked_2 extends Compnent {
+ onButtonClicked = (event) => {
+   console.log(this.props.name);
+ }
+ render() {
+   return (
+    <button onClick={this.onButtonClicked.bind}> Click me </button>
+   )
+ }
+}
+
+// Here there is a performance problem - bind is called every time the button is rendered
+class ButtonClicked_3 extends Compnent {
+ onButtonClicked(event){
+   console.log(this.props.name);
+ }
+ render() {
+   return (
+    <button onClick={this.onButtonClicked.bind(this)}> Click me </button>
+   )
+ }
+}
+
+-----------------------------------------------------------------------
+class ButtonClicked extends Compnent {
+constructor(props) {
+super(props);
+
+this.onButtonClicked = this.onButtonClicked.bind(this);
+}
+ onButtonClicked = (event) => {
+console.log(event.target);
+   console.log(this.props.name);
+ }
+ render() {
+   return (
+    <button onClick={this.onButtonClicked}> Click me </button>
+   )
+ }
+}

@@ -1,0 +1,5 @@
+When we are iterating through an array and we want to create many elements by given html element template, it's a good idea to give to this element a 'key' attrubute with unique value for each element. If this attribute is missing, React will use a non-efficient optimization way and will render the newly created element, but will re-render the old elements, too.
+
+In other case, it will optimize the performance - it will render only the modifications
+
+-> with index is not the best idea, because of adding content in the middle of the array 

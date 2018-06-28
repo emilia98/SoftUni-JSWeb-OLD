@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  
+}
+
+#result {
+  background-color: azure;
+  width: 50%;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+#result > * {
+  margin: 1%;
+  width: 100%;
+  font-size: 5em;
+  text-align: center;
+ 
+}
+
+#result h1 {
+  color: #a8579a;
+  text-transform: uppercase; 
+}
