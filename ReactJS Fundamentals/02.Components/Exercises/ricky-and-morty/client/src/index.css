@@ -1,0 +1,65 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  width: 100%;
+}
+
+#slider{
+  display: inline-block;
+  position: relative;
+width: 100%;
+text-align: center;
+}
+
+#slider .sliderImg{
+  max-height: 400px;
+
+}
+
+#slider .slider-button{
+  position: absolute;
+  top:80%;
+  transform:translateY(-50%);
+  width: 150px;
+  height: 150px;
+}
+
+.slider-button:hover {
+  cursor: pointer;
+}
+#slider .case-left {
+  left: 0;
+}
+#slider .case-right {
+  right: 0;
+}
+
+#roster {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.roster-img {
+  height: 200px;
+  width: auto;
+  border: 2px solid #ffc90e;
+}
+
+#roster-details {
+  width: 85%;
+  margin: 2% auto;
+  text-align: center;
+  border: 2px solid #7f7f7f;
+  padding: 2%;
+}
+
+#bio {
+  width: 65%;
+  margin: 0 auto; 
+}
+
+p {
+  display: inline;
+  padding: 1%;
+}
