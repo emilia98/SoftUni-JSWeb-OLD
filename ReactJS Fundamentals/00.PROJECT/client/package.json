@@ -1,0 +1,36 @@
+{
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "0.18.0",
+    "caniuse-lite": "1.0.30000865",
+    "flag-icon-css": "3.0.0",
+    "font-awesome": "4.7.0",
+    "google-map-react": "1.0.5",
+    "jquery": "3.3.1",
+    "react": "16.4.1",
+    "react-dom": "16.4.1",
+    "react-redux": "5.0.7",
+    "react-router-dom": "4.3.1",
+    "react-scripts": "1.1.4",
+    "redux": "4.0.0",
+    "redux-thunk": "2.3.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "proxy": {
+    "/auth/google/login": {
+      "target": "https://accounts.google.com",
+      "secure": false
+    },
+    "/auth/*": {
+      "target": "http://localhost:8080",
+      "secure": false
+    }
+  }
+}

@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  height: 100%;
+  width: 100%;
+  font-size: 20px;
+  overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#expolore-container {
+  width: 95%;
+  margin: 1% auto;
+}
+.page-title {
+  
+ 
+}
+
+.explore h1 {
+  margin: 0;
+  padding: 2%;
+}
+
+.explore {
+  width: 49%;
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+#explore-info {
+  width: 45%;
+  display: inline-block;
+}
+
+.explore.right {
+  text-align: right;
+}
+
+.explore select {
+  padding: 2%;
+  text-align: center;
+}
+
+#explore-info {
+  width: 100%;
+  padding: 1%;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.explore-results {
+  opacity: 0.5;
+}
+
+#explore-countries {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: inline-block;
+ vertical-align: middle;
+   word-break: break-all;
+}
+
+.explore-cell {
+  width: 25%;
+  margin: 1%;
+  height: 100%;
+  background: white;
+  font-size: 1vw;
+  text-transform: uppercase;
+  float: left;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.country-data{
+  width: 75%;
+  height: 100%;
+  padding: 5% 0;
+}
+
+.country-buttons {
+  width: 25%;
+  height: auto;
+}
+
+.country-buttons button{
+  width: 80%;
+  height: 33.33333%;
+  background: none;
+  border: none;
+  color: white;
+}
+
+
+button {
+  cursor: pointer;
+}
+.country-icon {
+  font-size: 7.5vw;
+  margin: 5% 0;
+   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 5px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+button.first-btn {
+  background: #22B470;
+}
+
+button.second-btn {
+  background: #1E90FF;
+}
+
+button.third-btn {
+  background: #DE4034;
+}
+
+button {
+  font-size: 1vw;
+}

@@ -1,0 +1,515 @@
+/*
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+}
+
+header {
+    width: 100%;
+    height: 20%;
+    box-sizing: border-box;
+}
+
+#header {
+    display: table;
+    border-collapse:separate;
+    border-spacing:2%;
+    width: 100%;
+    height: 100%;
+}
+
+
+.row {
+    display: table-cell;
+    width: 10%;
+    vertical-align: middle;
+    text-align: center;
+}
+
+#header #logo {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+img {
+    text-align: center;
+    width: 60%;
+}
+
+button {
+    padding: 3%;
+    border: none;
+    font-size: 1em;
+    background-color: transparent;
+}
+
+
+@media screen and (min-width: 680px) {
+    header {
+        display: none;
+    }
+
+    .non-responsive {
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 380px) {
+    button {
+        font-size: 0.9em;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    header {
+        padding: 2%;
+    }
+
+    .non-responsive {
+        display: none;
+    }
+}
+*/
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Caveat');
+* {
+    margin: 0;
+     padding: 0;
+}
+
+html, body {
+  margin: 0;
+}
+
+
+body {
+  height: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#logo {
+    font-family: 'Bauhaus 93', sans-serif;
+    width: 40%;
+}
+#navigation {
+    width: 100%;
+}
+
+#nav-bar {
+  /* background-color: #50C878; */
+  padding: 0;
+}
+
+#identication {
+    text-align: center;
+}
+
+nav {
+   
+    width: 100%;
+   display: inline-block;
+   margin-top: 1%;
+   
+}
+
+#main-menu {
+   text-align: center;
+}
+
+
+
+/*
+#sub-menu {
+    background-color: black;
+    color: white;
+  display: inline-block;
+}
+*/
+
+/*
+#sub-menu ul{
+    text-align: center;
+    font-family: 'Montserrat', cursive;
+}
+*/
+
+li {
+  display: inline-block;
+    padding: 1% 2%; 
+    text-align: center;
+    font-size: 0.9em;
+}
+/*
+#sub-menu li {
+    font-size: 1.1em;
+    padding: 1%;
+}
+*/
+
+nav#main-menu ul{
+    
+    text-align: center;
+  list-style-type: none;
+ }
+
+
+
+
+li.right{
+  float: right; 
+
+}
+
+li:hover {
+    background-color: #a2a3f8;
+}
+
+li.icon:hover {
+    background-color: black;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+nav p {
+    font-size: 1.5em;
+}
+
+h1 {
+    color: black;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: 'Caveat', cursive;
+}
+
+/*
+#sub-menu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #f5f5f5;
+    overflow-x: hidden;
+
+    padding-top: 60px;
+}
+
+#sub-menu span {
+    position: absolute;
+    top: 0;
+    right: 5%;
+    font-size: 1.2em;
+    margin: 5% 1%;
+    color: black;
+}
+
+#sub-menu span, li {
+    cursor: pointer;
+}
+
+#sub-menu li {
+   display: block;
+   font-size: 1.5em;
+}
+*/
+#sub-menu {
+    display: block;
+    font-size: 1.2em;
+    text-align: center;
+ }
+
+ #sub-menu li:hover {
+     cursor: pointer;
+ }
+
+.opened {
+    width: 20% !important;
+}
+
+#user {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+   margin: 0;
+    background-color: #f5f5f5;
+    overflow-x: hidden;
+    padding-top: 60px;
+}
+
+#user.opened {
+    width: 30%;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 1s linear;
+}
+
+#user ul {
+  width: 100%;
+  margin: 0 auto;
+  
+}
+
+#user li {
+  width: 100%;
+}
+
+#user li:hover {
+    background-color: transparent;
+}
+
+#user button {
+    cursor: pointer;
+}
+
+.nav-social-login{
+    font-size: 0.9em;
+    width: 70%;
+   margin: 0 auto;
+  }
+  
+  .nav-social-login p{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding: 2% 1%;
+  }
+
+  .nav-social-login a{
+    display: inline-block;
+    color: white;
+    width: 100%;
+    vertical-align: middle;
+  }
+
+  .nav-social-icon.facebook {
+     background-color: #283D68;
+  }
+  
+  .nav-social-icon.google {
+     background-color: #B52F1F;
+  }
+
+  .nav-facebook {
+    background-color: #3B5998;
+  }
+  
+  .nav-google {
+    background-color: #DD4B39;
+  }
+  
+  .authenticate {
+    width: 70%;
+    margin: 1% auto;
+  }
+  
+  .authenticate button{
+    width: 100%;
+    padding: 4%;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  #register {
+    background-color: #1ECD97
+  }
+
+  #login {
+    background-color: #FF9966;
+  }
+  
+  #user-close {
+      position: absolute;
+      top: 0;
+      left: 5%;
+      font-size: 1.2em;
+      margin: 3% 1%;
+      color: black;
+  }
+  
+  #user li {
+      cursor: pointer;
+  }
+  
+  .opened {
+      width: 20% !important;
+  }
+
+  #user ul {
+      width: 100%;
+      text-align: center;
+  }
+
+  #user .user-logged{
+    width: 90%;
+    
+    font-size: 15px;
+    padding: 1%;
+}
+
+#user .user-logged a{
+    /*
+    width: 100%;
+    height: 100%;
+    position: relative;
+    */
+    width: 100%;
+    height: 100%;
+    display:table;
+    
+    text-align: right;
+}
+
+#user .user-logged h3 {
+    
+    font-size: 1em;
+    display:table-cell;
+   
+    vertical-align:middle;
+}
+
+.user-logged:hover a{
+    color: #a2a3f8;
+}
+
+.user-logged i{
+    display: none;
+}
+#user .user-logged p {
+    text-align: center;
+}
+
+
+#personal-profile {
+    text-align: center;
+    display: inline-block !important;
+    margin-bottom: 5%;
+}
+
+
+#personal-profile img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+@media only screen and (max-width: 640px) {
+    /*
+   nav ul li {
+    font-size: 0.8em;
+   }
+
+   nav ul {
+    margin: 0 auto;
+    width: 50%;
+   }
+   */
+}
+
+
+@media only screen and (max-width: 700px) {
+    
+   div.responsive {
+       width: 40% !important;
+       font-size: 0.9em;
+    }
+    
+    
+ }
+
+ @media only screen and (max-width: 470px) {
+    
+    div.responsive {
+        width: 60% !important;
+        font-size: 0.9em;
+     }
+     
+     
+  }
+ 
+.pro {
+  background-color: #a8e39d;
+}
+
+button {
+  
+  background-color: transparent;
+  border: none;
+}
+
+button > span {
+  font-size: 1.5em;
+}
+
+.nav-div, .nav-div ul {
+  display: inline;
+}
+
+
+div.responsive {
+     width: 30%;
+  height: 100%;
+  position: fixed;
+  top:0;
+   background-color: #f5f5f5 !important;
+  left: 0;
+  
+  z-index: 1;
+   transition: 0.5s;
+   overflow: auto;
+}
+
+
+.responsive #main-menu {
+  
+
+}
+.responsive #sub-menu {
+  display: inline-block;
+  font-size: 1.2em;
+ width: 100%;
+}
+
+nav.responsive {
+    width: 100%;
+  
+}
+
+.responsive ul{
+  display: inline-block;
+  width: 100%;
+
+}
+
+.responsive ul li{
+  display: inline-block;
+  width: 100%;
+  padding: 5% 0;
+}
+
+.responsive ul li p, .responsive ul li i{
+  display: inline-block;
+  vertical-align: middle;
+  padding: 1%;
+}
+
+.clickable {
+    cursor: pointer;
+}

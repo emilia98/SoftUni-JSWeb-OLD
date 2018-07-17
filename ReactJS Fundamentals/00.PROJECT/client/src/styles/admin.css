@@ -1,0 +1,372 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  height: 100%;
+  width: 100%;
+  font-size: 20px;
+  overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#admin-nav {
+  height: 100%;
+  /*
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4%;
+  */
+   margin: 0;
+    padding: 0;
+    width: 4%;
+    height: 100%; /* Full height */
+    position: fixed;
+  overflow: auto;
+  text-align: center;
+  background: #dedddc;
+  /* 
+  background: #a23485;
+  text-align: center;
+  overflow: hidden;*/
+}
+
+#admin-nav ul{
+    width: 100%;
+    height: 100%; /* Full height */
+}
+
+/*
+#admin-nav:hover{
+  width: 15%;
+  text-align: left;
+}
+*/
+
+#admin-nav ul li{
+ list-style-type: none;
+  font-size: 1em;
+  padding: 10% 2%;
+  width: 100%;
+  color: #0a5271;
+}
+
+
+#admin-nav ul li:hover{
+  background: #a267de;
+  cursor: pointer;
+}
+
+
+.menu-icon, .menu-item {
+  height: 100%;
+    vertical-align: middle;
+    display: inline-block;
+  padding: 2% 3%;
+}
+.menu-icon {
+  font-size: 1.5em;
+}
+
+.menu-item {
+  font-size: 1em;
+  display: none;
+}
+
+
+/*
+#admin-nav:hover .menu-item {
+  display: inline;
+}
+*/
+
+#admin-content {
+  position: relative;
+  height: 100%;
+  width: 85%;
+  margin-left:10%;
+  text-align: center;
+}
+
+#countries-list {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  background: #ffffff;
+ text-align: center;
+overflow: hidden;
+  
+}
+
+.admin-row {
+  box-sizing: border-box;
+  width: 24%;
+  height: 100%;
+  background: #FFFFFF;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.country-title h2 {
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px #000000;
+  font-size: 1em;
+}
+
+img {
+  width: 150px;
+  height: 100px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 2%;
+}
+
+.actions {
+   padding: 2%;
+}
+.icon {
+  text-decoration: none;
+  color: #a8a8a8;
+  padding: 2%;
+  font-size: 0.7em;
+}
+
+.icon:hover {
+  color: #a895d1;
+}
+
+@media screen and (max-width: 1000px) {
+   #countries-list {
+  width: 100%;
+}
+  
+  .admin-row {
+  width:40%;
+    margin: 2% 1%;
+ }
+  
+  .country-title h2 {
+  font-size: 1em;
+}
+}
+
+
+@media screen and (max-width: 400px) {
+  #countries-list {
+  width: 100%;
+}
+  
+  .admin-row {
+  width:80%;
+ }
+  
+  .country-title h2 {
+  font-size: 1.2em;
+}
+}
+
+#country-container {
+  width: 50%;
+  height: 50%;
+  margin: 0 auto;
+  background-color: #FFFFFF;
+}
+
+.data h1 {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.data.title {
+   text-align: center;
+}
+
+.data {
+  width: 80%;
+  margin: 0 auto;
+  padding: 1% 0;
+}
+
+.data-half{
+  width: 45%;
+  display: inline-block;
+   text-align: center;
+}
+
+.data-half input{
+  width: 100%;
+  padding: 10% 5% !important;
+}
+
+.right {
+  text-align: center;
+  float: right;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin: 1% auto;
+}
+
+input {
+  width: 100%;
+  height: 30px;
+  background-color: #F1F1F1;
+  font-size: 1.3em;
+  padding: 4% 2%;
+  border: none;
+}
+
+div.error-important {
+  background-color: #E85F55;
+  color: #ffffff;
+  padding: 2%;
+}
+
+#buttons {
+  text-align: center;
+  font-weight: bold;
+  padding-top: 2%;
+}
+
+#buttons button{
+  padding: 2%;
+  cursor: pointer;
+  border-radius: 5px;
+  background: white;
+  font-size: 1em;
+}
+
+#cancel {
+  border: 2px solid #DD3232;
+  color: #DD3232;
+}
+
+#submit {
+  border: 2px solid #1ECD97;
+  color: #1ECD97;
+  padding: 2% 5% !important;
+}
+
+#submit:hover{
+  background: #1ECD97;
+  color: white;
+}
+
+#cancel:hover {
+  background: #DD3232;
+  color: white;
+}
+
+@media screen and (max-width: 1024px) {
+  #auth-container {
+    width: 75%;
+  }
+  
+  .data {
+  width: 100%;
+  margin: 0;
+}
+  input {
+    padding: 3% 1%;
+    font-size: 1.2em;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  #auth-container {
+    width: 100%;
+  }
+  
+  .data {
+  width: 100%;
+  margin: 0;
+}
+}
+
+@media screen and (max-width: 400px) {
+  
+ input {
+  font-size: 1em;
+}
+  .icon {
+
+  width: 15%;
+ 
+}
+}
+
+#expolore-container {
+  width: 95%;
+  margin: 1% auto;
+}
+.page-title {
+  display: inline-block;
+  width: 100%;
+  vertical-align: middle;
+}
+
+.explore h1 {
+  margin: 0;
+}
+
+.explore {
+  width: 49%;
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+#explore-info {
+  width: 45%;
+  display: inline-block;
+}
+
+.explore.right {
+  text-align: right;
+}
+
+.explore select {
+  padding: 2%;
+  text-align: center;
+}
+
+#explore-info {
+  width: 100%;
+  padding: 1%;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.explore-results {
+  opacity: 0.5;
+}
+
+#countries-table {
+  width: 50%;
+  margin: 0 auto;
+  font-size: 1.2em;
+}
+
+#countries-table table{
+  width: 90%;
+  text-align: center;
+}
+
+#countries-table table thead {
+  background: #a89564;
+}
+
+#countries-table table thead th, #countries-table table td{
+  padding: 1%;
+}
+
+#countries-table .country {
+  width: 80%;
+}

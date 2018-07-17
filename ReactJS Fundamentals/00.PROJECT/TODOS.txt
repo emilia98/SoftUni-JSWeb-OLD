@@ -1,0 +1,7 @@
+TODO:
+
+// Get redux action login
+// Login with Google
+// Login with Local Data
+// Create Profile of the User
+// Generate tokens
