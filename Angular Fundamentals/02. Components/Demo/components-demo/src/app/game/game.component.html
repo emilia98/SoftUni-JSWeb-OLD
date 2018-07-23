@@ -1,0 +1,20 @@
+<button (click)="showGames()" class="button" [class.hide-btn]='gamesShown'>{{gamesShown === true ? 'Hide' : 'Show'}} Games</button>
+
+<h1>Status: 
+  <span [style.background-color]="gamesShown ? '#a982e2' : 'red'">
+    {{gamesShown === false ? 'hidden' : 'shown'}}
+  </span>
+</h1>
+<div *ngIf="gamesShown">
+    <div *ngIf="games">
+        <ul >
+          <li *ngFor="let game of games; let i = index">
+            <h1>{{game.title | uppercase}}  <img [src]="icon" [alt]="gamer_icon" class="icon"/></h1>
+            <h3>Id: {{game.id}}</h3>
+            <h4>Index: {{i + 1}}</h4>
+            <img src="{{game.image}}" alt="{{game.title}}_picture"/>
+           <app-subscribe (notification)="notify($event)" [subscription]=game></app-subscribe>
+          </li>
+        </ul>
+      </div>
+</div>

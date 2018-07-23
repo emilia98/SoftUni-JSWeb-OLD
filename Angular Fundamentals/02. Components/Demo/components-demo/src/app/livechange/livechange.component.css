@@ -1,0 +1,21 @@
+.button {
+    padding: 1% 2%;
+    background: #ac34ce;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 2%;
+    font-size: 1.2em;
+}
+
+.hide-btn {
+    background: #f4a125;
+}
+
+.input-area {
+    margin: 2%;
+}
+
+input {
+    padding: 0.5%;
+    font-size: 1.2em;
+}

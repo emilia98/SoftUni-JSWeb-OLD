@@ -1,0 +1,7 @@
+<button (click)="showComponent()" [class.hide-btn]='componentShown' class="button">{{componentShown ? 'Hide' : 'Show'}} Input</button>
+<div *ngIf="componentShown" class="input-area">
+  <input type="text" #name placeholder="Enter your name..." />
+  <button (click)="showName(name.value)">Show Name</button>
+
+  <h1>Name: {{typed_name}}</h1>
+</div>

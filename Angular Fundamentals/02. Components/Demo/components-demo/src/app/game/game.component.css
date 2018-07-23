@@ -1,0 +1,17 @@
+.button {
+    padding: 1% 2%;
+    background: #03fa45;
+    border-radius: 5px;
+    border: none;
+    font-size: 1.2em;
+}
+
+.hide-btn {
+    background: #f4a125;
+}
+
+.icon {
+    width: 36px;
+    height: 36px;
+    background: transparent;
+}
