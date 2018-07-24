@@ -1,0 +1,22 @@
+<li>
+  <div class="title">
+    {{article.title}}
+  </div>
+  <button *ngIf="couldReadMore" (click)="readMore()">Read More</button>
+  <button *ngIf="shouldHide" (click)="hideDescription()">Hide Desc</button>
+  <button (click)="toggleImage()">
+    {{isImageShown ? 'Hide' : 'Show'}} Image
+  </button>
+  <div class="desc" *ngIf="article.description.length > 0">
+    {{descriptionToShow}}
+  </div>
+
+  <div class="desc" *ngIf="descriptionToShow.length === 0 && shouldHide">
+    <span >(no description)</span>
+  </div>
+  <img *ngIf="isImageShown" [src]="article.imageUrl" alt="article image" />
+</li>
+
+<div class="desc" *ngIf="articleDescLen > 0">{{descToShow}}</div>
+<button *ngIf="showHideBtn" (click)="hideDesc()">Hide Desc</button>    
+<button *ngIf="showReadMoreBtn" (click)="readMore()">Read More</button>

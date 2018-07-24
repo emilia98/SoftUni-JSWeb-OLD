@@ -1,0 +1,29 @@
+table, tr, td, th {
+    border-collapse: collapse;
+    border: 2px solid #525252;
+}
+
+td, th{
+    padding: 10px;
+    color: white;
+}
+
+th:nth-child(1), td:nth-child(1) {
+    background-color: #EA6153;
+}
+
+th:nth-child(2), td:nth-child(2) {
+    background-color: #60CB71;
+}
+
+th:nth-child(3), td:nth-child(3) {
+    background-color: #1F81D3;
+}
+
+th:nth-child(4), td:nth-child(4) {
+    background-color: #5F5DAC;
+}
+
+td{
+    opacity: 0.7;
+}

@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+.centered-text {
+    text-align: center;
+}
+
+h1 {
+    margin: -10px -8px;
+    font-family: 'Lato', serif;
+    padding: 15px 10px;
+    background: rgb(255, 224, 168);
+}
