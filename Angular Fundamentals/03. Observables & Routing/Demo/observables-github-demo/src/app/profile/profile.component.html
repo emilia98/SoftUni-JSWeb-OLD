@@ -1,0 +1,10 @@
+<div *ngIf="profile" id="profile">
+    <div>
+        <img src="{{profile.avatar_url}}" alt="profile picture" />
+    </div>
+    <div>
+        <h1>
+            <a href="{{profile.html_url}}">{{profile.login}}</a>
+        </h1>
+    </div>
+</div>
