@@ -1,7 +1,22 @@
 <div style="text-align: center">
   <h1>
-    Welcome to {{title}}
+    <a routerLink='/'>Welcome to {{title}}</a>
   </h1>
 </div>
+<div>
+  <nav>
+    <ul>
+      <li>
+        <a routerLink="/home">Home</a>
+      </li>
+      <li>
+        <a routerLink="/about">About</a>
+      </li>
+      <li>
+        <a routerLink="/admin">Admin</a>
+      </li>
+    </ul>
+  </nav>
+</div>
 
-<app-home></app-home>
+<router-outlet></router-outlet>
