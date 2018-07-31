@@ -1,0 +1,25 @@
+<div class="row row-lg">
+  <div class="col-md-6">
+
+    <form #form="ngForm" (ngSubmit)="login(form)">
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" (click)="show(emailField)" class="form-control" id="email" name="email" ngModel #emailField="ngModel" required>
+        <div class="alert alert-danger" *ngIf="emailField.touched && emailField.errors && emailField.errors.required">Email is required</div> 
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" ngModel/>
+      </div>
+      <div class="form-group">
+          <label for="processor">Processor</label>
+          <input type="text" class="form-control" id="processor" name="processor" [(ngModel)]="model.processor"/>
+        </div>
+      <div class="form-check">
+        <input type="checkbox" class="" id="checkbox" name="checkbox">
+        <label class="form-check-label" for="checkbox">Check me out</label>
+      </div>
+      <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>

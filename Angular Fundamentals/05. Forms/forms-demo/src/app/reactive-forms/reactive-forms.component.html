@@ -1,0 +1,29 @@
+<div class="row row-lg">
+  <div class="col-md-6">
+
+    <form [formGroup]="passForm" (ngSubmit)="log()">
+      <div class="form-group">
+        <label for="old">Current Password:</label>
+        <input type="text" class="form-control" id="old" formControlName="currentPass" (click)="onClicked(passForm.get('currentPass'))"
+        />
+        <div *ngIf="passForm.get('currentPass').touched && passForm.get('currentPass').errors">
+          <div *ngIf="passForm.get('currentPass').errors.required" class="alert alert-danger">
+            Password is required
+          </div>
+          <div *ngIf="passForm.get('currentPass').errors.minlength" class="alert alert-danger">
+              Password must be at least 3 characters
+            </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="new">New Password:</label>
+        <input type="text" class="form-control" id="new" formControlName="newPass" />
+      </div>
+      <div class="form-group">
+        <label for="repeat">Repeat Password:</label>
+        <input type="text" class="form-control" id="repeat" formControlName="repeatPass" />
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>
