@@ -1,0 +1,25 @@
+<div class="row row-lg">
+  <div class="col-md-6">
+
+    <form [formGroup]="loginForm" (ngSubmit)="log()">
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" class="form-control" id="username" formControlName="username" (click)="onClicked(loginForm.get('username'))"
+        />
+        <div *ngIf="loginForm.get('username').touched && loginForm.get('username').errors">
+          <div *ngIf="loginForm.get('username').errors.space" class="alert alert-danger">
+            Usernames should not contain any whitespace characters!
+          </div>
+          <div *ngIf="loginForm.get('username').errors.noMatch" class="alert alert-danger">
+            Usernames should contain at least one lowercase letter, one uppercase letter and one digit!
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="text" class="form-control" id="password" formControlName="password" />
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>

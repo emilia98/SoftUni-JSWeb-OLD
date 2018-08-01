@@ -1,5 +1,15 @@
-
 <div class="container">
-    <app-reactive-forms></app-reactive-forms>
-    <app-template-driven-form></app-template-driven-form>
+    <div id="buttons">
+        <a routerLink="/custom-validations">
+            <button type="button" class="btn btn-danger btn-lg">Custom Validations</button>
+        </a>
+        <a routerLink="/reactive-form">
+            <button type="button" class="btn btn-primary btn-lg">Reactive Form</button>
+        </a>
+        <a routerLink="/template-driven-forms">
+            <button type="button" class="btn btn-warning btn-lg">Template-Driven Form</button>
+        </a>
+    </div>
+
+    <router-outlet></router-outlet>
 </div>
