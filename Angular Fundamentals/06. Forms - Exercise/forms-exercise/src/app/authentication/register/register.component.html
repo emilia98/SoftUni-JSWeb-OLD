@@ -1,6 +1,10 @@
 <div class="container">
   <h1>Registration Form</h1>
-  <form [formGroup]="registerForm" (submit)="formSubmitted(registerForm)">
+  
+  <div *ngIf="hasError" class="alert alert-danger">
+    <h4 class="alert-heading text-center">{{serverResponse}}</h4>
+  </div>
+  <form [formGroup]="registerForm" (submit)="onRegister()">
     <div class="form-group">
       <label for="username">Username</label>
       <input type="text" class="form-control" id="username" formControlName="username" required (click)="log(registerForm.get('username'))">
@@ -97,7 +101,7 @@
       <input type="number" class="form-control" id="age" formControlName="age">
     </div>
 
-    
+
     <button type="submit" class="btn btn-success" [disabled]="registerForm.invalid">Register</button>
   </form>
 </div>
