@@ -11,7 +11,5 @@ export class AppComponent implements OnInit{
 
   constructor(private authService :AuthenticationService) {}
 
-  ngOnInit() {
-    console.log(this.authService.date);
-  }
+  ngOnInit() {}
 }

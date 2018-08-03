@@ -30,7 +30,6 @@ import { BaseComponent } from './base/base.component';
     AppRoutesModule,
     ReactiveFormsModule,
     RouterModule,
-    
   ],
   providers: [ 
     AuthenticationService

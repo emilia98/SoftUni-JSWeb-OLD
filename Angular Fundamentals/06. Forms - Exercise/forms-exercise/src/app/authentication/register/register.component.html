@@ -98,7 +98,12 @@
     </div>
     <div class="form-group">
       <label for="age">Age</label>
-      <input type="number" class="form-control" id="age" formControlName="age">
+      <input type="text" class="form-control" id="age" formControlName="age">
+      <div *ngIf="age.touched && age.errors" class="alert alert-danger">
+        <div *ngIf="age.errors.isValid === false">
+          `Age` should be a whole number in range 0-150.
+        </div>
+      </div>
     </div>
 
     <button type="submit" class="btn btn-success" [disabled]="registerForm.invalid">Register</button>

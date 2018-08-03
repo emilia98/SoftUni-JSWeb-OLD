@@ -7,6 +7,7 @@ import { NameValidator } from './validators/name.validator';
 import { EmailValidator } from './validators/email.validator';
 import { RegisterModel } from '../models/register.model';
 import { AuthenticationService } from '../services/authentication.service';
+import { AgeValidator } from './validators/age.validator';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,6 @@ import { AuthenticationService } from '../services/authentication.service';
   // providers: [AuthenticationService]
 })
 export class RegisterComponent implements OnInit {
-  @Input() title: string;
   public registerForm: FormGroup;
   public username: AbstractControl;
   public password: AbstractControl;
@@ -23,6 +23,7 @@ export class RegisterComponent implements OnInit {
   public firstName: AbstractControl;
   public lastName: AbstractControl;
   public email: AbstractControl;
+  public age: AbstractControl; 
   public hasError: boolean = false;
   public serverResponse: string = "";
 
@@ -30,7 +31,7 @@ export class RegisterComponent implements OnInit {
     private authService: AuthenticationService,
     private router: Router
   ) { }
-
+  
   onRegister() {
     let readyForm = new RegisterModel(
       this.username.value, this.password.value,
@@ -76,9 +77,10 @@ export class RegisterComponent implements OnInit {
       email: new FormControl('', [
         EmailValidator.isEmailValidated
       ]),
-      age: new FormControl('')
+      age: new FormControl('', [
+        AgeValidator.isValidAge
+      ])
     })
-
 
     this.username = this.registerForm.get('username');
     this.password = this.registerForm.get('password');
@@ -86,6 +88,7 @@ export class RegisterComponent implements OnInit {
     this.firstName = this.registerForm.get('firstName');
     this.lastName = this.registerForm.get('lastName');
     this.email = this.registerForm.get('email');
+    this.age = this.registerForm.get('age');
     // this.registerForm.get('age').disable();
   }
 
@@ -102,8 +105,6 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.authService.date);
     this.buildForm();
   }
-
 }
