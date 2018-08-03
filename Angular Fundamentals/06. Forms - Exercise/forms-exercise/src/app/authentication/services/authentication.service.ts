@@ -13,19 +13,17 @@ const logoutUrl = `${baseUrl}/${appKey}/_logout`;
 const authUrl = `https://baas.kinvey.com/appdata/${appKey}/test`;
 
 @Injectable()
-export class AuthenticationService implements OnInit{
-    private currentToken :string;
-    public isAuthenticated :boolean;
-     public date :any = new Date().getTime();
+export class AuthenticationService implements OnInit {
+    private currentToken: string;
+    public isAuthenticated: boolean;
+    public date: any = new Date().getTime();
     constructor(
         private httpClient: HttpClient
-        
-    ) { 
-        console.log(this);
+    ) {
         this.isAuth();
     }
 
-    private generateAuthHeaders(type ): HttpHeaders {
+    private generateAuthHeaders(type): HttpHeaders {
         let headers = {
             'Authorization': '',
             'Content-Type': 'application/json'
@@ -40,7 +38,7 @@ export class AuthenticationService implements OnInit{
         return new HttpHeaders(headers);
     }
 
-    register(registerModel :RegisterModel) {
+    register(registerModel: RegisterModel) {
         return this.httpClient.post(
             registerUrl,
             JSON.stringify(registerModel),
@@ -50,7 +48,7 @@ export class AuthenticationService implements OnInit{
         )
     }
 
-    login(loginModel : LoginModel) : Observable<Object>{
+    login(loginModel: LoginModel): Observable<Object> {
         return this.httpClient.post<Object>(
             loginUrl,
             JSON.stringify(loginModel),
@@ -59,24 +57,6 @@ export class AuthenticationService implements OnInit{
             }
         )
     }
-
-    /*
-    isLoggedIn() {
-        this.authService.isAuth().subscribe(
-          data => {
-            this.isAuthenticated = true;
-            this.router.navigate(['/home']);
-            // console.log(data)
-          },
-          err => {
-            this.isAuthenticated = false;
-            // console.log(err)
-          }
-        );
-        // this.authService.isAuth();
-        //console.log('here');
-        // this.authService.isAuth().subscribe(data => console.log(data));
-      }*/
 
     isAuth() {
         return this.httpClient.get(
@@ -87,14 +67,20 @@ export class AuthenticationService implements OnInit{
         ).subscribe(
             data => {
                 this.isAuthenticated = true;
-                console.log(data);
             },
             err => {
                 this.isAuthenticated = false;
-                console.log(err);
             }
         )
-        // console.log(isAuth);
+    }
+
+    returnResult() {
+        return this.httpClient.get(
+            authUrl,
+            {
+                headers: this.generateAuthHeaders('Kinvey')
+            }
+        );
     }
 
     logout() {
@@ -115,14 +101,9 @@ export class AuthenticationService implements OnInit{
         return this.currentToken;
     }
 
-    set authtoken(value :string) {
-        console.log('here');
-        console.log(value);
+    set authtoken(value: string) {
         this.currentToken = value;
     }
 
-    ngOnInit() {
-
-    }
+    ngOnInit() {}
 }
-

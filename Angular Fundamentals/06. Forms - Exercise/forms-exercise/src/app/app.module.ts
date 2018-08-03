@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpModule, Http } from '@angular/http';
  
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
@@ -12,6 +11,9 @@ import { HomeComponent } from './home/home.component';
 import { AppRoutesModule } from './app.routes.module';
 import { Router, RouterModule } from '@angular/router';
 import { AuthenticationService } from './authentication/services/authentication.service';
+import { AuthenticatedRoutes } from './authentication/services/routes/authenticated-routes.service';
+import { AnonymousRoutes } from './authentication/services/routes/anonymous-routes.service';
+import { BaseComponent } from './base/base.component';
 
 @NgModule({
   declarations: [
@@ -19,18 +21,20 @@ import { AuthenticationService } from './authentication/services/authentication.
     NavigationComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    BaseComponent
   ],
   imports: [
     BrowserModule,
-    //HttpModule,
     HttpClientModule,
     AppRoutesModule,
     ReactiveFormsModule,
     RouterModule,
     
   ],
-  providers: [ AuthenticationService ],
+  providers: [ 
+    AuthenticationService
+   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

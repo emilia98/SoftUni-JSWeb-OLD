@@ -37,36 +37,11 @@ export class NavigationComponent implements OnInit {
     });
   }
 
-  /*
-  isLoggedIn() {
-    this.authService.isAuth().subscribe(
-      data => {
-        this.isAuthenticated = true;
-        this.router.navigate(['/home']);
-        // console.log(data)
-      },
-      err => {
-        this.isAuthenticated = false;
-        // console.log(err)
-      }
-    );
-    // this.authService.isAuth();
-    //console.log('here');
-    // this.authService.isAuth().subscribe(data => console.log(data));
-  }
-  */
-
   logoutSuccess() {
     this.authService.isAuthenticated = false;
     localStorage.clear();
     this.router.navigate(['/']);
   }
   
-  ngOnInit() {
-    console.log(this.authService)
-    console.log(this.authService.date);
-   // console.log(this.authService.date);
-   // this.isLoggedIn();
-  }
-
+  ngOnInit() {}
 }

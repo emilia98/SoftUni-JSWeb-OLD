@@ -7,7 +7,7 @@
   <form [formGroup]="registerForm" (submit)="onRegister()">
     <div class="form-group">
       <label for="username">Username</label>
-      <input type="text" class="form-control" id="username" formControlName="username" required (click)="log(registerForm.get('username'))">
+      <input type="text" class="form-control" id="username" formControlName="username" required>
       <div *ngIf="username.touched && username.errors" class="alert alert-danger">
         <div *ngIf="username.errors.required">
           Username is required.
@@ -44,7 +44,7 @@
     </div>
     <div class="form-group">
       <label for="confirmPassword">Confirm Password</label>
-      <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPass" (click)="log(registerForm.get('confirmPass'))">
+      <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPass">
       <div *ngIf="confirmPass.touched">
         <div *ngIf="confirmPass.errors && confirmPass.errors.required" class="alert alert-danger">
           Confirm password is required.
@@ -100,7 +100,6 @@
       <label for="age">Age</label>
       <input type="number" class="form-control" id="age" formControlName="age">
     </div>
-
 
     <button type="submit" class="btn btn-success" [disabled]="registerForm.invalid">Register</button>
   </form>

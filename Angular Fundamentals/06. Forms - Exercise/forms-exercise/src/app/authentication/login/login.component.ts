@@ -59,12 +59,10 @@ export class LoginComponent implements OnInit {
     this.authService.authtoken = authtoken;
     localStorage.setItem('authtoken', authtoken);
     localStorage.setItem('username', data.username);
-    this.router.navigate(['/']);
+    this.router.navigate(['/home']);
   }
 
   ngOnInit() {
-    console.log(this.authService.date);
-    //console.log(this.authService.date);
     this.buildForm();
   }
 
