@@ -1,0 +1,11 @@
+<h1 *ngIf="authService.auth">
+  Hello, {{username}}!
+</h1>
+<div *ngIf="!authService.auth">
+  <h1>
+    Welcome!
+  </h1>
+  <p>
+    <a routerLink="/signup">Register</a> or <a routerLink="/singin">Login</a> to continue using this app!
+  </p>
+</div>

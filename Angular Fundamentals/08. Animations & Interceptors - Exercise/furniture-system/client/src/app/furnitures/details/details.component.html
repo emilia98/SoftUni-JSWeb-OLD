@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row space-top">
+    <div class="col-md-12">
+      <h1>Furniture Details</h1>
+    </div>
+  </div>
+  <div class="row space-top">
+    <div class="col-md-4">
+      <div class="card text-white bg-primary">
+        <div class="card-body">
+          <blockquote class="card-blockquote">
+            <img src="{{image}}" />
+          </blockquote>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <p>
+        <span>Make: </span>
+        <span class="result">{{make}}</span>
+      </p>
+      <p>
+        <span>Model: </span>
+        <span class="result">{{model}}</span>
+      </p>
+      <p>
+        <span>Year: </span>
+        <span class="result">{{year}}</span>
+      </p>
+      <p>
+        <span>Description: </span>
+        <span class="result">{{description}}</span>
+      </p>
+      <p>
+        <span>Price: </span>
+        <span class="result">{{price}}</span>
+      </p>
+      <p>
+        <span>Material: </span>
+        <span *ngIf="material" class="result">{{material}}</span>
+        <span *ngIf="material == null" class="result">N/A</span>
+      </p>
+    </div>
+  </div>
+</div>
