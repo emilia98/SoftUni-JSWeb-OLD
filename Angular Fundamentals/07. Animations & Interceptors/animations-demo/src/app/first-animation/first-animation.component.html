@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-xs-12">
+        <h1>Animations</h1>
+        <button class="btn btn-primary" (click)="animate()">Animate!</button>
+        <button class="btn btn-primary" (click)="shrink()">Shrink!</button>
+        <hr>
+        <div class="box" [@divState]="state">
+        </div>
+        <br>
+        <div class="box" [@wildState]="wildState">
+        </div>
+    </div>
+</div>
