@@ -1,0 +1,81 @@
+.price {
+    display: block;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.price span{
+    display: inline;
+    background-color:transparent;
+    color: #CB144A;
+    font-weight: 900;
+    
+}
+
+.label {
+    display: inline-block;
+    font-weight: 900;
+    width: 25%;
+}
+
+.badge-dark{
+    color: white;
+    background-color: #343a40;
+    padding: 2%;
+}
+
+.badge-dark a {
+    color: white;
+}
+a {
+    text-decoration: none;
+}
+
+.btn {
+    cursor: pointer;
+}
+.btn-outlined {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: 900;
+    cursor: pointer;
+    padding: 1% 2%;
+    color: white;
+}
+
+.btn-text {
+    
+}
+
+.button {
+    margin-top: 2%;
+}
+
+.align-right {
+    text-align: right;
+}
+
+#favourites {
+    background-color: #E3256B;
+}
+
+#message {
+    background-color: #0D7EF8;
+}
+
+#offer {
+    color: white;
+    font-weight: 900;
+    text-transform: uppercase;
+    border: none;
+    font-size: 1rem;
+    background-color: #343a40;
+    display: inline-block;
+    width: 70%;
+    padding: 2% 4%;
+}
+
+.btn-outlined:hover {
+    opacity: 1;
+}

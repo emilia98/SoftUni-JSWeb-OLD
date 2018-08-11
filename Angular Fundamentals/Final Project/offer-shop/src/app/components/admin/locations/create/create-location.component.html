@@ -1,0 +1,152 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-8 col-sm-offset-2 col-md-offset-3 col-lg-offset-2" id="form">
+        <form [formGroup]="createForm" (submit)="onSubmit($event)">
+            <h2>Create Location
+                <small>v0.0.1</small>
+            </h2>
+
+            <div *ngIf="hasErrors" class="alert alert-light">
+                <div *ngIf="errorsCount['name'] > 0" class="custom-error">
+                    <h4>Name: </h4>
+                    <p *ngIf="errors.name.invalidLength">
+                        - should be between 1 and 100 characters long.
+                    </p>
+                    <p *ngIf="!errors.name.invalidLength && errors.name.invalidFormat">
+                        - should start with a capital letter and should contain only cyrillic letters and spaces.
+                    </p>
+                </div>
+
+                <div *ngIf="errorsCount['postCode'] > 0" class="custom-error">
+                    <h4>Post Code: </h4>
+                    <p *ngIf="errors.postCode.invalidCode">
+                        - should be a whole number in range [1000, 9999]
+                    </p>
+                </div>
+
+                <div *ngIf="errorsCount['latitude'] > 0" class="custom-error">
+                    <h4>Latitude: </h4>
+                    <p *ngIf="errors.latitude.invalidLatitude">
+                        - should be a number in range (-90, 90).
+                    </p>
+                </div>
+
+                <div *ngIf="errorsCount['longitude'] > 0" class="custom-error">
+                    <h4>Longitude: </h4>
+                    <p *ngIf="errors.longitude.invalidLongitude">
+                        - should be a number in range (-180, 180).
+                    </p>
+                </div>
+
+                <div *ngIf="errorsCount['type'] > 0" class="custom-error">
+                    <h4>Location Type:</h4>
+                    <p *ngIf="errors.type.invalidType">
+                        - shoule be either 'град' or 'село'.
+                    </p>
+                </div>
+            </div>
+            <hr class="colorgraph">
+            <div class="form-group">
+                <label for="name">Name: </label>
+                <input type="text" id="name" formControlName="name" class="form-control input-lg" placeholder="Display Name" tabindex="3">
+                <!-- (name.touched && name.errors) ||  
+                    name.errors.invalidLength 
+                !name.errors.invalidLength && name.errors.invalidFormat
+            -->
+                <div *ngIf="(name.touched && name.errors)" class="alert alert-danger">
+                    <p *ngIf="name.errors.invalidLength">
+                        <em>Name</em> should be between 1 and 100 characters long.
+                    </p>
+                    <p *ngIf="!name.errors.invalidLength && name.errors.invalidFormat">
+                        <em>Name</em> should start with a capital letter and should contain only cyrillic letters and spaces.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label for="post-code">Пощенски код: </label>
+                        <input type="text" id="post-code" formControlName="postCode" class="form-control input-lg" placeholder="Post Code" tabindex="2">
+                    </div>
+                    <div *ngIf="postCode.touched && postCode.errors" class="alert alert-danger">
+                        <p *ngIf="postCode.errors.required">
+                            <em>Post Code</em> is required.
+                        </p>
+                        <p *ngIf="!postCode.errors.required && postCode.errors.invalidCode">
+                            <em>Post Code</em> should be a number in range [1000, 9999].
+                        </p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label for="type"> Тип: </label>
+                        <select class="form-control" formControlName="type" id="location-type">
+                            <option value="град">
+                                Град
+                            </option>
+                            <option value="село">
+                                Село
+                            </option>
+                        </select>
+                        <div *ngIf="type.touched && type.errors" class="alert alert-danger">
+                            <p *ngIf="type.errors.required">
+                                Select a
+                                <em>type</em>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label for="lat">Latitude: </label>
+                        <input type="text" id="lat" formControlName="latitude" class="form-control input-lg" placeholder="Latitude" tabindex="2">
+                        <div *ngIf="latitude.touched && latitude.errors" class="alert alert-danger">
+                            <p *ngIf="latitude.errors.required">
+                                <em>Latitude</em> is required.
+                            </p>
+                            <p *ngIf="!latitude.errors.required && latitude.errors.invalidLatitude">
+                                <em>Latitude</em> should be a number in range (-90, 90).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label for="lng">Longitude: </label>
+                        <input type="text" id="lng" formControlName="longitude" class="form-control input-lg" placeholder="Longitude" tabindex="2">
+                        <div *ngIf="longitude.touched && longitude.errors" class="alert alert-danger">
+                            <p *ngIf="longitude.errors.required">
+                                <em>Longitude</em> is required.
+                            </p>
+                            <p *ngIf="!longitude.errors.required && longitude.errors.invalidLongitude">
+                                <em>Longitude</em> should be a number in range (-180, 180).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12" id="map">
+                MAP HERE
+
+            </div>
+
+            <hr class="colorgraph">
+            <div class="row">
+                <div class="col-xs-6 col-md-6">
+                    <button type="button" class="btn btn-danger btn-block btn-lg" tabindex="7">
+                        Cancel
+                    </button>
+                </div>
+                <div class="col-xs-6 col-md-6">
+                    <button type="submit" class="btn btn-primary btn-block btn-lg" [disabled]="createForm.invalid" (click)="create()" tabindex="8">
+                        Create
+                    </button>
+                </div>
+
+            </div>
+        </form>
+
+
+    </div>
+</div>

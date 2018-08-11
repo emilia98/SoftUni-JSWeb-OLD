@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-8 col-sm-offset-2 col-md-offset-3 col-lg-offset-2" id="form">
+        <form [formGroup]="createForm" (submit)="onSubmit($event)">
+            <h2>Create Category
+                <small>v0.0.1</small>
+            </h2>
+            <hr class="colorgraph">
+            <div class="form-group">
+                <label for="title">Title: </label>
+                <input type="text" id="title" formControlName="title" class="form-control input-lg" placeholder="Type Title..." tabindex="4">
+            </div>
+            <div class="form-group">
+                <label for="parent-category">Has Parent Category: </label>
+                <button *ngIf="hasParent" type="button" class="btn btn-success custom-btn" (click)="clicked()">Yes</button>
+                <button *ngIf="!hasParent" type="button" class="btn btn-danger custom-btn" (click)="clicked()">No</button>
+            </div>
+            <div class="form-group">
+                <label for="category-slug">Category Slug: </label>
+                <input type="text" id="category-slug" formControlName="categorySlug"
+                class="form-control input-lg" placeholder="Type Slug..." tabindex="5">
+            </div>
+            <div *ngIf="!hasParent" class="form-group">
+                <label for="icon">Icon:</label>
+                <div class="">
+                    <input type="text" id="icon" formControlName="icon" class="form-control input-lg with-preview" />
+                    <span class="preview" id="icon-preview">Preview</span>
+                </div>
+            </div>
+            <hr class="colorgraph">
+            <div class="row">
+                <div class="col-xs-6 col-md-6">
+                    <button type="submit" class="btn btn-danger btn-block btn-lg" tabindex="7">
+                        Cancel
+                    </button>
+                </div>
+                <div class="col-xs-6 col-md-6">
+                    <button type="submit" class="btn btn-primary btn-block btn-lg" (click)="create($event)" tabindex="8">
+                        Create
+                    </button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

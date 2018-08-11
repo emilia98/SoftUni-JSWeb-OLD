@@ -1,0 +1,142 @@
+<!-- this creates a google map on the page with the given lat/lng from -->
+<!-- the component as the initial center of the map: -->
+
+<!--
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-6" id="map">
+            <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" >
+                
+            </agm-map>
+
+        </div>
+        <div class="col-12 col-md-6 col-lg-6">
+            <h2>Contacts</h2>
+            <div class="row">
+                <div class="col-12 col-md-12 col-lg-6">
+                    <h5>Address</h5>
+                    <div>
+                        <ul class="contacts-list">
+                            <li *ngFor="let email of emails" class="h5">
+                                <span class="badge badge-secondary badge-contacts">{{email}}</span>
+                                <span class="badge badge-secondary badge-contacts">{{email}}</span>
+                                <span class="badge badge-secondary badge-contacts">{{email}}</span>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="col-12 col-md-12 col-lg-6">
+                    <h5>Person</h5>
+                    <div>
+                        <ul class="contacts-list">
+                            <li *ngFor="let email of emails" class="h5">
+                                <span class="badge badge-secondary badge-contacts">{{email}}</span>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="col-12 col-md-12 col-lg-6">
+                    <h5>Emails</h5>
+                    <div>
+                        <ul class="contacts-list">
+                            <li *ngFor="let email of emails" class="h5">
+                                <span class="badge badge-secondary badge-contacts">{{email}}</span>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="col-12 col-md-12 col-lg-6">
+                    <h5>Telefon</h5>
+                    <div>
+                        <ul class="contacts-list">
+                            <li *ngFor="let email of emails" class="h5">
+                                <span class="badge badge-secondary badge-contacts">{{email}}</span>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+-->
+
+<!-- this creates a google map on the page with the given lat/lng from -->
+<!-- the component as the initial center of the map: -->
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-md-12 col-lg-12">
+            <div class="section-title">
+                <h2>Contacts</h2>
+                <hr>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-md-12 col-lg-6">
+                    <h5>
+                        <span>Address</span>
+                        <button type="button" class="btn btn-primary btn-sm" id="toggle-map-btn">Large button</button>
+                    </h5>
+                    <div>
+                        <ul class="contacts-list">
+                            <li *ngFor="let email of emails" class="h5">
+                                <span class="badge badge-secondary badge-contacts">{{email}}</span>
+                                <span class="badge badge-secondary badge-contacts">{{email}}</span>
+                                <span class="badge badge-secondary badge-contacts">{{email}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-md-12 col-lg-6">
+                    <h5>Person</h5>
+                    <div>
+                        <ul class="contacts-list">
+                            <li *ngFor="let email of emails" class="h5">
+                                <span class="badge badge-secondary badge-contacts">{{email}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-md-12 col-lg-6">
+                    <h5>Emails</h5>
+                    <div>
+                        <ul class="contacts-list">
+                            <li *ngFor="let email of emails" class="h5">
+                                <span class="badge badge-secondary badge-contacts">{{email}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-md-12 col-lg-6">
+                    <h5>Telefon</h5>
+                    <div>
+                        <ul class="contacts-list">
+                            <li *ngFor="let email of emails" class="h5">
+                                <span class="badge badge-secondary badge-contacts">{{email}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-md-12 col-lg-12 text-center">
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-12 col-md-12 col-lg-12" id="map">
+            <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+
+            </agm-map>
+
+        </div>
+    </div>
+</div>

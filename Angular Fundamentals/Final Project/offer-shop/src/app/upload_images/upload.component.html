@@ -1,0 +1,88 @@
+<form action="#" (submit)="clicked()">
+    <div class="file-field">
+        <div class="btn btn-primary btn-large float-left">
+            <span>Choose files</span>
+            <input (change)="onFilesSelected($event)" type="file" multiple>
+        </div>
+       
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-large">Submit</button>
+</form>
+
+
+<div class="row text-center text-lg-left">
+
+    <div *ngIf="!images">
+        upload up to 12 images
+    </div>
+    <div *ngFor="let value of readonly;let i=index" class="col-lg-3 col-md-4 col-xs-6">
+        <a href="#" class="d-block mb-4 h-100">
+          <img *ngIf="images[i]" class="img-fluid img-thumbnail" src="{{images[i]}}" alt="">
+          <img *ngIf="images[i] === undefined" class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+        </a>
+    </div>
+
+    <!--
+    <div class="col-lg-3 col-md-4 col-xs-6">
+      <a href="#" class="d-block mb-4 h-100">
+        <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+      </a>
+    </div>
+    <div class="col-lg-3 col-md-4 col-xs-6">
+      <a href="#" class="d-block mb-4 h-100">
+        <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+      </a>
+    </div>
+    <div class="col-lg-3 col-md-4 col-xs-6">
+      <a href="#" class="d-block mb-4 h-100">
+        <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+      </a>
+    </div>
+    <div class="col-lg-3 col-md-4 col-xs-6">
+      <a href="#" class="d-block mb-4 h-100">
+        <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+      </a>
+    </div>
+    <div class="col-lg-3 col-md-4 col-xs-6">
+      <a href="#" class="d-block mb-4 h-100">
+        <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+      </a>
+    </div>
+    <div class="col-lg-3 col-md-4 col-xs-6">
+      <a href="#" class="d-block mb-4 h-100">
+        <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+      </a>
+    </div>
+    <div class="col-lg-3 col-md-4 col-xs-6">
+      <a href="#" class="d-block mb-4 h-100">
+        <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+      </a>
+    </div>
+    <div class="col-lg-3 col-md-4 col-xs-6">
+      <a href="#" class="d-block mb-4 h-100">
+        <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+      </a>
+    </div>
+    <div class="col-lg-3 col-md-4 col-xs-6">
+      <a href="#" class="d-block mb-4 h-100">
+        <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+      </a>
+    </div>
+    <div class="col-lg-3 col-md-4 col-xs-6">
+      <a href="#" class="d-block mb-4 h-100">
+        <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+      </a>
+    </div>
+    <div class="col-lg-3 col-md-4 col-xs-6">
+      <a href="#" class="d-block mb-4 h-100">
+        <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+      </a>
+    </div>
+    <div class="col-lg-3 col-md-4 col-xs-6">
+      <a href="#" class="d-block mb-4 h-100">
+        <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+      </a>
+    </div>
+-->
+  </div>
