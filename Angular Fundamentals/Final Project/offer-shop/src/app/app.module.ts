@@ -7,26 +7,25 @@ import { ToastrModule } from 'ngx-toastr';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { DetailsComponent } from './details/details.component';
-import { UploadComponent } from './upload_images/upload.component';
-import { ContactsComponent } from './details/contacts/contacts.component';
 
-import { InputComponent } from './input/input.component';
-import { AdminModule } from './components/admin/admin.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
-// import { AdminModule } from './admin/admin.module';
-// import { AdminComponent } from './admin/admin.component';
+import { AppRouterModule } from './app.routing';
+import { RouterModule } from '@angular/router';
+import { AdminComponent } from './components/admin/admin.component';
+import { AdminModule } from './components/admin/admin.module';
+import { InternalServerErrorComponent } from './components/errors/error-500/500.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    DetailsComponent,
-    UploadComponent,
-    ContactsComponent,
+    InternalServerErrorComponent
+    //DetailsComponent,
+    //UploadComponent,
+    //ContactsComponent,
     //AdminComponent,
 
-
-    InputComponent
+    //InputComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +35,8 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDR8Z2N52y_yH4WC5O-gw74wfthApE5xRE'
     }),
+    RouterModule,
+    AppRouterModule,
     AdminModule,
     ToastrModule.forRoot()
   ],

@@ -15,5 +15,11 @@ export class LocationService {
             data
         );
     }
+
+    getAllLocations() {
+        return this.httpClient.get(
+            `${this.commonUrl}/list`
+        )
+    }
     
 }

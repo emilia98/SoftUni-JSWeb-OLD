@@ -10,19 +10,25 @@ import { CategoryService } from '../../core/services/admin/category.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 import { LocationService } from '../../core/services/admin/location.service';
+import { LocationsAllComponent } from './locations/list-all/list-all.component';
+import { AdminRouterModule } from './admin.routing';
 
+console.log('booasiosafasfasfasfjaskfasf')
 @NgModule({
     declarations: [
         SidebarMenuComponent,
         AdminComponent,
         SidebarHeaderComponent,
         CreateLocationComponent,
-        CreateCategoryComponent
+        CreateCategoryComponent,
+        LocationsAllComponent,
+        
     ],
     imports: [
         CommonModule,
         ReactiveFormsModule,
-        AgmCoreModule
+        AgmCoreModule,
+        AdminRouterModule
     ],
     providers: [
         CategoryService,
@@ -30,7 +36,8 @@ import { LocationService } from '../../core/services/admin/location.service';
     ],
     exports: [ 
         AdminComponent,
-    ]
+    ],
+    bootstrap: [ AdminComponent ]
 })
 
 export class AdminModule {}

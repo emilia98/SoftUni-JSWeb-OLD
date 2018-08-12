@@ -1,0 +1,8 @@
+div#page {
+    background: linear-gradient(to bottom, #6666ff 0%, #00ffcc 100%);
+    color: white;
+}
+
+.page-wrap {
+    min-height: 100vh;
+}

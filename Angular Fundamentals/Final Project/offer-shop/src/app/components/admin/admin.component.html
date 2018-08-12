@@ -2,15 +2,17 @@
     <div class="sidebar">
         <div class="sidebar-inner">
             <!-- ### $Sidebar Header ### -->
-            <app-sidebar-header></app-sidebar-header>
+            <!--
+                <app-sidebar-header></app-sidebar-header>
+                -->
             <!-- ### $Sidebar Menu ### -->
-           <app-sidebar-menu></app-sidebar-menu>
+            <app-sidebar-menu></app-sidebar-menu>
         </div>
     </div>
 
     <!-- #Main ============================ -->
     <div class="page-container">
-       
+
         <!-- ### $Topbar ### -->
         <div class="header navbar">
             <div class="header-container">
@@ -239,6 +241,7 @@
                 </ul>
             </div>
         </div>
-        <app-create-location></app-create-location>
-        <app-create-category></app-create-category>
+
+
+        <router-outlet></router-outlet>
     </div>

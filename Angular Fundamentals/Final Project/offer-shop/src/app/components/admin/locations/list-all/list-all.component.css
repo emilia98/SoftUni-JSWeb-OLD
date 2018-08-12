@@ -1,0 +1,176 @@
+#main {
+    display: block;
+    margin: 0 auto;
+    padding: 3%;
+    padding-top: 70px;
+    
+}
+
+.main-title {
+    margin: 0.5%;
+}
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+.responsive-table {
+    overflow-x: auto;
+}
+  /*
+  #myInput {
+   
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+  }*/
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ddd;
+    font-size: 18px;
+  }
+  
+  table th, table td {
+    text-align: left;
+    padding: 12px;
+  }
+  
+  table tr {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  table tr.header, table tr:hover {
+    background-color: #f1f1f1;
+  }
+
+ 
+
+
+.actions i {
+    font-size: 1.2em;
+}
+
+
+
+td, th {
+    padding: 6px 20px;
+  border: 1px solid #d9d7ce;
+  word-wrap: break-word;
+  
+}
+
+
+.align-center , th{
+    text-align: center !important;
+}
+
+
+tr:nth-child(2n + 0) {
+    background: #F3F7F9;
+}
+
+
+button {
+    cursor: pointer;
+}
+header {
+    width: 75%;
+    margin: 2% auto;
+    margin-left: 20%;
+    font-size: 15px;
+}
+
+header h1 {
+    display: inline-block;
+    margin-right: 2%;
+    vertical-align: middle;
+}
+
+header button {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 1% 2%;
+    background:#5678fe;
+    border: none;
+    font-size: 1.2em;
+    color: #ffffff;
+}
+
+td.actions {
+    width: 5%;
+}
+td.actions button {
+    padding: 1%;
+    font-size: 1.2em;
+    background: transparent;
+    border: none;
+    opacity: 0.3;
+}
+
+
+td.actions button:hover {
+    opacity: 0.8;
+}
+
+.title {
+    font-size: 1em;
+    vertical-align: middle;
+    height: auto;
+}
+
+button.sort-btn {
+    margin-left: 1%;
+    font-size: 1.5em;
+    background: transparent;
+    border: none;
+}
+
+.filter {
+    box-sizing: border-box;
+    text-align: center;
+}
+.filter input{
+    width: 100%;
+    padding: 2%;
+    font-size: 1em;
+}
+
+@media only screen and (max-width: 960px) {
+    table {
+        font-size: 1em;
+    }
+    td.actions {
+        display: table-cell;
+        text-align: center !important;
+    }
+    td.actions button {
+        display: block;
+       margin: 0 auto;
+    }
+    .filter input{
+        width: 200px;
+        padding: 3%;
+        font-size: 1em;
+    }
+}

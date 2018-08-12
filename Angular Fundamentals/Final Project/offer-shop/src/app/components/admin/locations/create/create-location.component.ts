@@ -39,7 +39,7 @@ export class CreateLocationComponent implements OnInit {
 
     constructor(
         private locationService :LocationService,
-        private toastr :ToastrService
+        private toastr :ToastrService,
     ) {}
 
     create() {

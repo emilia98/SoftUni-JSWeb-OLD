@@ -24,8 +24,8 @@ export class AppComponent {
     }
   ]
   
-  @ViewChild('gmap') gmapElement: any;
-  map: google.maps.Map;
+  //@ViewChild('gmap') gmapElement: any;
+  //map: google.maps.Map;
 
   title = 'app';
 
@@ -40,6 +40,6 @@ export class AppComponent {
       zoom: 15,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
-    this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
+    // this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
   }
 }
