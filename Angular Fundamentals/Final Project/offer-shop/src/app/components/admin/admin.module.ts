@@ -12,6 +12,7 @@ import { AgmCoreModule } from '@agm/core';
 import { LocationService } from '../../core/services/admin/location.service';
 import { LocationsAllComponent } from './locations/list-all/list-all.component';
 import { AdminRouterModule } from './admin.routing';
+import { EditLocationComponent } from './locations/edit/edit-location.component';
 
 console.log('booasiosafasfasfasfjaskfasf')
 @NgModule({
@@ -22,7 +23,7 @@ console.log('booasiosafasfasfasfjaskfasf')
         CreateLocationComponent,
         CreateCategoryComponent,
         LocationsAllComponent,
-        
+        EditLocationComponent
     ],
     imports: [
         CommonModule,

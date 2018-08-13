@@ -82,18 +82,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr *ngFor="let location of locations">
                                 <td class="title">
-                                    <a>Bulgarian Lev </a>
+                                    <a>{{location.name}}</a>
                                 </td>
                                 <td class="title">
-                                    <a>Bulgarian Lev </a>
+                                    <a>{{location.locationType}}</a>
                                 </td>
                                 <td class="title align-center">
-                                    <span class="badge badge-success">active</span>
+                                    <span *ngIf="location.isActive" class="badge badge-success">active</span>
+                                    <span *ngIf="!location.isActive" class="badge badge-success">active</span>
                                 </td>
                                 <td class="align-center actions">
-                                    <button>
+                                    <button routerLink="/admin/location/edit/{{location.name}}/{{location._id}}">
                                         <i class="fa fa-pencil" aria-hidden="true"></i>
                                     </button>
                                 </td>

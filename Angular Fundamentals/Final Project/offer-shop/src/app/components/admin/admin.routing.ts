@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LocationsAllComponent } from './locations/list-all/list-all.component';
 import { CreateLocationComponent } from './locations/create/create-location.component';
 import { AdminComponent } from './admin.component';
+import { EditLocationComponent } from './locations/edit/edit-location.component';
 
 const adminRoutes :Routes = [
     { 
@@ -15,6 +16,11 @@ const adminRoutes :Routes = [
         pathMatch: 'full',
         component: CreateLocationComponent,
     },
+    {
+        path: 'location/edit/:name/:id',
+        pathMatch: 'full',
+        component: EditLocationComponent
+    }
 ];
 
 

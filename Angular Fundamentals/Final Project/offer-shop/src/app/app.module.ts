@@ -15,11 +15,13 @@ import { RouterModule } from '@angular/router';
 import { AdminComponent } from './components/admin/admin.component';
 import { AdminModule } from './components/admin/admin.module';
 import { InternalServerErrorComponent } from './components/errors/error-500/500.component';
+import { ConnectionErrorComponent } from './components/errors/error-0/connection-error.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    InternalServerErrorComponent
+    InternalServerErrorComponent,
+    ConnectionErrorComponent
     //DetailsComponent,
     //UploadComponent,
     //ContactsComponent,

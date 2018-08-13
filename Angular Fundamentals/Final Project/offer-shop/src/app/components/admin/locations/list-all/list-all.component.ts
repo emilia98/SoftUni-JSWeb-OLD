@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class LocationsAllComponent implements OnInit {
     public hasResult = false;
+    public locations = null;
     constructor(
         private locationService :LocationService,
         private router :Router
@@ -16,9 +17,10 @@ export class LocationsAllComponent implements OnInit {
     
     ngOnInit() {
         this.locationService.getAllLocations().subscribe(
-            (data) => {
-                console.log(data);
+            (data :any) => {
+                console.log(data.locations);
                 this.hasResult = true;
+                this.locations = data.locations;
             },
             (err) => {
                 this.hasResult = true;
