@@ -1,0 +1,192 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-6 col-lg-8 col-sm-offset-2 col-md-offset-3 col-lg-offset-2" id="form">
+            <form [formGroup]="registerForm" (submit)="onSubmit($event)">
+                <h2>Register
+                    <small>v0.0.1</small>
+                </h2>
+
+                <!--
+                <div *ngIf="hasErrors" class="alert alert-light">
+                    <div *ngIf="errorsCount['name'] > 0" class="custom-error">
+                        <h4>Username: </h4>
+                        <p *ngIf="errors.name.invalidLength">
+                            - should be between 1 and 100 characters long.
+                        </p>
+                        <p *ngIf="!errors.name.invalidLength && errors.name.invalidFormat">
+                            - should start with a capital letter and should contain only cyrillic letters and spaces.
+                        </p>
+                    </div>
+    
+                    <div *ngIf="errorsCount['postCode'] > 0" class="custom-error">
+                        <h4>Post Code: </h4>
+                        <p *ngIf="errors.postCode.invalidCode">
+                            - should be a whole number in range [1000, 9999]
+                        </p>
+                    </div>
+    
+                    <div *ngIf="errorsCount['latitude'] > 0" class="custom-error">
+                        <h4>Latitude: </h4>
+                        <p *ngIf="errors.latitude.invalidLatitude">
+                            - should be a number in range (-90, 90).
+                        </p>
+                    </div>
+    
+                    <div *ngIf="errorsCount['longitude'] > 0" class="custom-error">
+                        <h4>Longitude: </h4>
+                        <p *ngIf="errors.longitude.invalidLongitude">
+                            - should be a number in range (-180, 180).
+                        </p>
+                    </div>
+    
+                    <div *ngIf="errorsCount['type'] > 0" class="custom-error">
+                        <h4>Location Type:</h4>
+                        <p *ngIf="errors.type.invalidType">
+                            - shoule be either 'град' or 'село'.
+                        </p>
+                    </div>
+                </div>
+            -->
+                <hr class="colorgraph">
+                <div class="form-group">
+                    <!--
+                    <div class="row">
+                        <div class="col-md-10 col-10 col-lg-10">
+                            <input type="text" id="username" class="form-control input-lg" formControlName="username" placeholder="Username..." tabindex="3">
+                        </div>
+                        <div class="col-md-2 col-2 col-lg-2">
+                            <span class="badge badge-light">{{username.value.length}}</span>
+                        </div>
+                    </div>
+                -->
+                    <div *ngIf="username.touched && username.errors" class="form-error">
+                        <div *ngIf="username.errors.required">
+                            <span class="text-strong">Username</span> is required.
+                        </div>
+                        <div *ngIf="!username.errors.required && username.errors.hasUnproperLength">
+                            <span class="text-strong">Username</span> should contain
+                            <span class="text-strong">between 3 and 20 </span> characters.
+                        </div>
+                        <div *ngIf="!username.errors.required && username.errors.containsForbiddenChars">
+                            <span class="text-strong">Username</span> should contain only
+                            <span class="text-strong">latin letters, digits and underscores.</span>
+                        </div>
+                    </div>
+                    <input type="text" id="username" class="form-control input-lg" formControlName="username" placeholder="Username..." tabindex="3">
+                    <div>
+                        <small class="text-muted">
+                            Symbols:
+                            <span class="content-length">{{username.value.length}}</span>
+                        </small>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <!--
+                    <div class="row">
+                        <div class="col-md-10 col-10 col-lg-10">
+                            <input type="text" id="email" class="form-control input-lg" formControlName="email" placeholder="Email..." tabindex="3">
+                        </div>
+                        <div class="col-md-2 col-2 col-lg-2">
+                            <span class="badge badge-light">{{email.value.length}}</span>
+                        </div>
+                    </div>
+                -->
+                    <div *ngIf="email.touched && email.errors" class="form-error">
+                        <div *ngIf="email.errors.required">
+                            <span class="text-strong">Email</span> is required.
+                        </div>
+                        <div *ngIf="!email.errors.required && email.errors.hasIncorrectFormat">
+                            Enter a
+                            <span class="text-strong">valid email.</span>
+                        </div>
+                    </div>
+                    <input type="text" id="email" class="form-control input-lg" formControlName="email" placeholder="Email..." tabindex="3">
+                    <div>
+                        <small class="text-muted">
+                            Symbols:
+                            <span class="content-length">{{email.value.length}}</span>
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <!--
+                    <div class="row">
+                        <div class="col-md-10 col-10 col-lg-10">
+                            <input type="password" id="password" class="form-control input-lg" formControlName="password" placeholder="Type password..."
+                                tabindex="3">
+                        </div>
+                        <div class="col-md-2 col-2 col-lg-2">
+                            <span class="badge badge-light">{{password.value.length}}</span>
+                        </div>
+                    </div>
+                -->
+                    <div *ngIf="password.touched && password.errors" class="form-error">
+                        <div *ngIf="password.errors.required">
+                            <span class="text-strong">Password</span> is required.
+                        </div>
+                        <div *ngIf="!password.errors.required && password.errors.hasUnproperLength">
+                            <span class="text-strong">Password</span> should be between
+                            <span class="text-strong">4 and 20</span> characters long.
+                        </div>
+                        <div *ngIf="!password.errors.required && password.errors.containsForbiddenChars">
+                            <span class="text-strong">Password</span> should contain only
+                            <span class="text-strong">latin letters, digits and _, @, #, $, &, -, and *.</span>
+                        </div>
+                    </div>
+                    <input type="password" id="password" class="form-control input-lg" formControlName="password" placeholder="Type password..."
+                        tabindex="3">
+                    <div>
+                        <small class="text-muted">
+                            Symbols:
+                            <span class="content-length">{{password.value.length}}</span>
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <!--
+                    <div class="row">
+                        <div class="col-md-10 col-10 col-lg-10">
+                            <input type="password" id="confirm" class="form-control input-lg" formControlName="confirmPassword" placeholder="Type confirm password..."
+                                tabindex="3">
+                        </div>
+                        <div class="col-md-2 col-2 col-lg-2">
+                            <span class="badge badge-light">{{confirm.value.length}}</span>
+                        </div>
+                    </div>
+                -->
+
+                    <div *ngIf="confirm.touched && confirm.errors" class="form-error">
+                        <div *ngIf="confirm.errors.required">
+                            <span class="text-strong">Confirm Password</span> is required.
+                        </div>
+                    </div>
+                    <div *ngIf="password.value !== confirm.value">
+                            <span class="text-strong">Both passwords should match.</span>
+                    </div>
+
+                    <input type="password" id="confirm" class="form-control input-lg" formControlName="confirmPassword" placeholder="Type confirm password..."
+                        tabindex="3">
+                    <div>
+                        <small class="text-muted">
+                            Symbols:
+                            <span class="content-length">{{confirm.value.length}}</span>
+                        </small>
+                    </div>
+                </div>
+
+                <hr class="colorgraph">
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        <button type="submit" class="btn btn-primary btn-block btn-lg" [disabled]="registerForm.invalid" tabindex="8">
+                            Register
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

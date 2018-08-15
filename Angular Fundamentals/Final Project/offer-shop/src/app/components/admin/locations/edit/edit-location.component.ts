@@ -37,36 +37,20 @@ export class EditLocationComponent implements OnInit {
     public errorsCount: Object = {};
     public hasErrors: boolean = false;
 
-
     constructor(
         private locationService: LocationService,
         private toastr: ToastrService,
         private route: ActivatedRoute,
         private router: Router
     ) { }
+
     /*
-    
 
     public title :string = 'Google Maps Api';
     public lat :number = 42.8707915;
     public lng :number =  25.3168769;
     public zoom :number = 5;
 
-   
-   
-
-    create() {
-        // console.log('creataasfasfasf');
-    }
-
-    
-
-    clicked(event) {
-        //console.log(this.type);
-        // console.log(event);
-    }
-
-    
     /* In case wehave a map
     onChanges() {
         this.latitude.valueChanges.subscribe(val => {
@@ -81,7 +65,6 @@ export class EditLocationComponent implements OnInit {
     */
 
     onSubmit(event) {
-        console.log(this.editForm);
         event.preventDefault();
 
         let location = new LocationModel(
@@ -92,32 +75,29 @@ export class EditLocationComponent implements OnInit {
             this.longitude.value
         );
 
-        this.locationService.createLocation(location).subscribe(
+        let locationId = this.location._id;
+        this.locationService.editLocation(locationId, location).subscribe(
             (data) => {
                 this.toastr.success(
-                    'You have created a new location.',
-                    'Successfully added');
+                    'You have edited this location successfully!',
+                    'Successfully edited');
                 this.hasErrors = false;
-                // console.log(data)
-                // console.log(this.hasErrors);
+                this.router.navigate(['/admin/locations']);
             },
             (err) => {
                 this.hasErrors = err.error.hasErrors;
                 this.errors = err.error.errors;
-                // console.log(err);
-
+               
                 for (let field in this.errors) {
                     let count = Object.values(this.errors[field]).length;
                     this.errorsCount[field] = count;
                 }
-
-                // console.log(this.errorsCount);
             }
         )
+        
     }
 
     buildForm() {
-        console.log(this.location.name)
         this.editForm = new FormGroup({
             name: new FormControl(this.location.name, [
                 LocationNameValidator.isValidNameLength,
@@ -127,7 +107,7 @@ export class EditLocationComponent implements OnInit {
                 Validators.required,
                 PostCodeValidator.isValidPostCode
             ]),
-            type: new FormControl(this.location.type, [
+            type: new FormControl(this.location.locationType, [
                 Validators.required
             ]),
             latitude: new FormControl(this.location.latitude, [
@@ -143,7 +123,8 @@ export class EditLocationComponent implements OnInit {
         this.postCode = this.editForm.get('postCode');
         this.latitude = this.editForm.get('latitude');
         this.longitude = this.editForm.get('longitude');
-        console.log(this.editForm)
+       
+        console.log(this.type);
     }
 
     ngOnInit() {
@@ -154,9 +135,10 @@ export class EditLocationComponent implements OnInit {
         this.locationService.getSingleLocation(id).subscribe(
             (data: any) => {
                 this.hasResult = true;
-                console.log(data);
+                
 
                 this.location = data.location;
+                console.log(this.location);
                 this.buildForm();
             },
             (err) => {

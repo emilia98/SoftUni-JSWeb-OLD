@@ -15,8 +15,14 @@ export class LocationService {
             data
         );
     }
-    
 
+    editLocation(id, data) {
+        return this.httpClient.post(
+            `${this.commonUrl}/edit/${id}`,
+            data
+        );
+    }
+    
     getAllLocations() {
         return this.httpClient.get(
             `${this.commonUrl}/list`

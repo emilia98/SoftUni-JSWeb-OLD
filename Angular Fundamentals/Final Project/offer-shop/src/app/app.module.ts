@@ -16,12 +16,15 @@ import { AdminComponent } from './components/admin/admin.component';
 import { AdminModule } from './components/admin/admin.module';
 import { InternalServerErrorComponent } from './components/errors/error-500/500.component';
 import { ConnectionErrorComponent } from './components/errors/error-0/connection-error.component';
+import { AccountModule } from './components/authentication/account.module';
+import { RegisterComponent } from './components/authentication/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InternalServerErrorComponent,
-    ConnectionErrorComponent
+    ConnectionErrorComponent,
+    // RegisterComponent
     //DetailsComponent,
     //UploadComponent,
     //ContactsComponent,
@@ -40,6 +43,7 @@ import { ConnectionErrorComponent } from './components/errors/error-0/connection
     RouterModule,
     AppRouterModule,
     AdminModule,
+    AccountModule,
     ToastrModule.forRoot()
   ],
   providers: [

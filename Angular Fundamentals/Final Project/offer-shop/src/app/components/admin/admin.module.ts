@@ -14,7 +14,6 @@ import { LocationsAllComponent } from './locations/list-all/list-all.component';
 import { AdminRouterModule } from './admin.routing';
 import { EditLocationComponent } from './locations/edit/edit-location.component';
 
-console.log('booasiosafasfasfasfjaskfasf')
 @NgModule({
     declarations: [
         SidebarMenuComponent,
