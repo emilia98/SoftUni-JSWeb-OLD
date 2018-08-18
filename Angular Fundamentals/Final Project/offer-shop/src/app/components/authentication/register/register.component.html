@@ -1,4 +1,11 @@
 <div class="container">
+    <div *ngIf="isLoading" class="row">
+        <div class="col-xs-12 col-sm-8 col-md-6 col-lg-8 col-sm-offset-2 col-md-offset-3 col-lg-offset-2" id="form">
+            <div class="loader">
+                <h1>Loading....</h1>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-xs-12 col-sm-8 col-md-6 col-lg-8 col-sm-offset-2 col-md-offset-3 col-lg-offset-2" id="form">
             <form [formGroup]="registerForm" (submit)="onSubmit($event)">
@@ -6,59 +13,70 @@
                     <small>v0.0.1</small>
                 </h2>
 
-                <!--
+                <div *ngIf="hasRejected || serverError" class="alert alert-light form-error">
+                    <h3>{{errorMsg}}</h3>
+                </div>
+
                 <div *ngIf="hasErrors" class="alert alert-light">
-                    <div *ngIf="errorsCount['name'] > 0" class="custom-error">
-                        <h4>Username: </h4>
-                        <p *ngIf="errors.name.invalidLength">
-                            - should be between 1 and 100 characters long.
-                        </p>
-                        <p *ngIf="!errors.name.invalidLength && errors.name.invalidFormat">
-                            - should start with a capital letter and should contain only cyrillic letters and spaces.
-                        </p>
+                    <div *ngIf="usernameErrors" class="form-error">
+                        <h4 class="error-title">Username: </h4>
+                        <ul>
+                            <li *ngIf="usernameErrors.required">
+                                <span class="text-strong">Username</span> is required.
+                            </li>
+                            <li *ngIf="!usernameErrors.required && usernameErrors.hasUnproperLength">
+                                <span class="text-strong">Username</span> should contain
+                                <span class="text-strong">between 3 and 20 </span> characters.
+                            </li>
+                            <li *ngIf="!usernameErrors.required && usernameErrors.containsForbiddenChars">
+                                <span class="text-strong">Username</span> should contain only
+                                <span class="text-strong">latin letters, digits and underscores.</span>
+                            </li>
+                        </ul>
                     </div>
-    
-                    <div *ngIf="errorsCount['postCode'] > 0" class="custom-error">
-                        <h4>Post Code: </h4>
-                        <p *ngIf="errors.postCode.invalidCode">
-                            - should be a whole number in range [1000, 9999]
-                        </p>
+                    <div *ngIf="emailErrors" class="form-error">
+                        <h4 class="error-title">Email: </h4>
+                        <ul>
+                            <li *ngIf="emailErrors.required">
+                                <span class="text-strong">Email</span> is required.
+                            </li>
+                            <li *ngIf="!emailErrors.required && emailErrors.hasIncorrectFormat">
+                                Enter a
+                                <span class="text-strong">valid email.</span>
+                            </li>
+                        </ul>
                     </div>
-    
-                    <div *ngIf="errorsCount['latitude'] > 0" class="custom-error">
-                        <h4>Latitude: </h4>
-                        <p *ngIf="errors.latitude.invalidLatitude">
-                            - should be a number in range (-90, 90).
-                        </p>
+                    <div *ngIf="passwordErrors" class="form-error">
+                        <h4 class="error-title">Password: </h4>
+                        <ul>
+                            <li *ngIf="passwordErrors.required">
+                                <span class="text-strong">Password</span> is required.
+                            </li>
+                            <li *ngIf="!passwordErrors.required && passwordErrors.hasUnproperLength">
+                                <span class="text-strong">Password</span> should be between
+                                <span class="text-strong">4 and 20</span> characters long.
+                            </li>
+                            <li *ngIf="!passwordErrors.required && passwordErrors.containsForbiddenChars">
+                                <span class="text-strong">Password</span> should contain only
+                                <span class="text-strong">latin letters, digits and _, @, #, $, &, -, and *.</span>
+                            </li>
+                        </ul>
                     </div>
-    
-                    <div *ngIf="errorsCount['longitude'] > 0" class="custom-error">
-                        <h4>Longitude: </h4>
-                        <p *ngIf="errors.longitude.invalidLongitude">
-                            - should be a number in range (-180, 180).
-                        </p>
-                    </div>
-    
-                    <div *ngIf="errorsCount['type'] > 0" class="custom-error">
-                        <h4>Location Type:</h4>
-                        <p *ngIf="errors.type.invalidType">
-                            - shoule be either 'град' or 'село'.
-                        </p>
+                    <div *ngIf="confirmPassErrors" class="form-error">
+                        <h4 class="error-title">Confirm Password: </h4>
+                        <ul>
+                            <li *ngIf="confirmPassErrors.required">
+                                <span class="text-strong">Confirm Password</span> is required.
+                            </li>
+                            <li *ngIf="!confirmPassErrors.required && confirmPassErrors.doesNotMatch">
+                                <span class="text-strong">Both passwords should match.</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-            -->
+
                 <hr class="colorgraph">
                 <div class="form-group">
-                    <!--
-                    <div class="row">
-                        <div class="col-md-10 col-10 col-lg-10">
-                            <input type="text" id="username" class="form-control input-lg" formControlName="username" placeholder="Username..." tabindex="3">
-                        </div>
-                        <div class="col-md-2 col-2 col-lg-2">
-                            <span class="badge badge-light">{{username.value.length}}</span>
-                        </div>
-                    </div>
-                -->
                     <div *ngIf="username.touched && username.errors" class="form-error">
                         <div *ngIf="username.errors.required">
                             <span class="text-strong">Username</span> is required.
@@ -72,6 +90,7 @@
                             <span class="text-strong">latin letters, digits and underscores.</span>
                         </div>
                     </div>
+
                     <input type="text" id="username" class="form-control input-lg" formControlName="username" placeholder="Username..." tabindex="3">
                     <div>
                         <small class="text-muted">
@@ -83,16 +102,6 @@
                 </div>
 
                 <div class="form-group">
-                    <!--
-                    <div class="row">
-                        <div class="col-md-10 col-10 col-lg-10">
-                            <input type="text" id="email" class="form-control input-lg" formControlName="email" placeholder="Email..." tabindex="3">
-                        </div>
-                        <div class="col-md-2 col-2 col-lg-2">
-                            <span class="badge badge-light">{{email.value.length}}</span>
-                        </div>
-                    </div>
-                -->
                     <div *ngIf="email.touched && email.errors" class="form-error">
                         <div *ngIf="email.errors.required">
                             <span class="text-strong">Email</span> is required.
@@ -112,17 +121,6 @@
                 </div>
 
                 <div class="form-group">
-                    <!--
-                    <div class="row">
-                        <div class="col-md-10 col-10 col-lg-10">
-                            <input type="password" id="password" class="form-control input-lg" formControlName="password" placeholder="Type password..."
-                                tabindex="3">
-                        </div>
-                        <div class="col-md-2 col-2 col-lg-2">
-                            <span class="badge badge-light">{{password.value.length}}</span>
-                        </div>
-                    </div>
-                -->
                     <div *ngIf="password.touched && password.errors" class="form-error">
                         <div *ngIf="password.errors.required">
                             <span class="text-strong">Password</span> is required.
@@ -147,25 +145,13 @@
                 </div>
 
                 <div class="form-group">
-                    <!--
-                    <div class="row">
-                        <div class="col-md-10 col-10 col-lg-10">
-                            <input type="password" id="confirm" class="form-control input-lg" formControlName="confirmPassword" placeholder="Type confirm password..."
-                                tabindex="3">
-                        </div>
-                        <div class="col-md-2 col-2 col-lg-2">
-                            <span class="badge badge-light">{{confirm.value.length}}</span>
-                        </div>
-                    </div>
-                -->
-
                     <div *ngIf="confirm.touched && confirm.errors" class="form-error">
                         <div *ngIf="confirm.errors.required">
                             <span class="text-strong">Confirm Password</span> is required.
                         </div>
                     </div>
                     <div *ngIf="password.value !== confirm.value">
-                            <span class="text-strong">Both passwords should match.</span>
+                        <span class="text-strong">Both passwords should match.</span>
                     </div>
 
                     <input type="password" id="confirm" class="form-control input-lg" formControlName="confirmPassword" placeholder="Type confirm password..."

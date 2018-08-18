@@ -3,17 +3,22 @@ import { CommonModule } from '@angular/common';
 import { AccountRouterModule } from './account.routing';
 import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthenticationService } from '../../core/services/auth/authenticate.service';
+import { LoginComponent } from './login/register.component';
 
 @NgModule({
     declarations: [
-        RegisterComponent
+        RegisterComponent,
+        LoginComponent
     ],
     imports: [
         CommonModule,
         ReactiveFormsModule,
         AccountRouterModule
     ],
-    providers: [],
+    providers: [
+        AuthenticationService
+    ],
     exports: []
 })
 export class AccountModule {}
