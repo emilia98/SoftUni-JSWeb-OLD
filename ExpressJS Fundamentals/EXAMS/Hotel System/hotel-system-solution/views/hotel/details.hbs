@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-12 col-md-12 col-lg-12">
+        <h1 class="text-center">{{hotel.title}}</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 col-md-6 col-lg-6">
+        <img src="{{hotel.imageUrl}}" alt="hotel_{{hotel.title}}" />
+    </div>
+    <div class="col-12 col-md-6 col-lg-6">
+        <div>
+            <h2>Location:</h2>
+            <p>{{hotel.location}}</p>
+        </div>
+        <div>
+            <h2>Description:</h2>
+            <p>{{hotel.description}}</p>
+        </div>
+        <div>
+            <h2>Category:
+                <a href="/list/{{hotel.category}}" class="btn btn-success btn-sm">{{hotel.category}}</a>
+            </h2>
+        </div>
+        <div>
+            <h2>Creator:
+                <a href="/profile/{{hotel.creator}}" class="btn btn-primary btn-sm">{{hotel.creator}}</a>
+            </h2>
+        </div>
+        <div>
+            <h2>Views:
+                <span class="badge badge-info">{{hotel.views}}</span>
+            </h2>
+        </div>
+        <div>
+            <h2>Total Likes:
+                <span class="badge badge-dark">{{hotel.totalLikes}}</span>
+            </h2>
+        </div>
+        
+        {{#if user}} 
+        {{#if hotel.isLiked}}
+        <div>
+            
+            <a href="/hotel/like/{{hotel.id}}" class="btn btn-danger btn-sm">Dislike</a>
+        </div>
+        {{else}}
+        <div>
+            <a href="/hotel/like/{{hotel.id}}" class="btn btn-primary btn-sm">Like</a>
+        </div>
+        {{/if}} {{/if}}
+    </div>
+</div>
