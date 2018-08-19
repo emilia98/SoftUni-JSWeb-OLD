@@ -17,4 +17,12 @@ export class AuthenticationService {
             data
         );
     }
+
+    login(data) {
+        let url = `${this.commonUrl}/login`;
+        return this.httpClient.post<Object>(
+            url,
+            data
+        );
+    }
 }

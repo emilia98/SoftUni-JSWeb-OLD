@@ -1,0 +1,130 @@
+/* Credit to bootsnipp.com for the css for the color graph */
+.colorgraph {
+    height: 5px;
+    border-top: 0;
+    background: #c4e17f;
+    border-radius: 5px;
+    background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+    background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+    background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+    background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  }
+
+  #form {
+      display: block;
+      margin: 0 auto;
+      padding-top: 70px;
+  }
+
+  #form form {
+      padding: 2%;
+  }
+
+  p {
+      margin: 0;
+  }
+
+.custom-error{
+    color: #CC0000;
+}
+
+.badge {
+    font-size: 0.7rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.badge-primary {
+    color: #fff;
+    background-color: #007bff;
+}
+
+.badge-light {
+    color: #212529;
+    background-color: #f8f9fa;
+}
+
+.badge-dark {
+    color: #fff;
+    background-color: #343a40;
+}
+
+.badge-info {
+    color: #fff;
+    background-color: #17a2b8;
+}
+
+.custom-badge {
+    font-size: 1.2rem;
+    padding: 1%;
+    margin-left: 2%; 
+    margin-right: 2%; 
+}
+.content-length {
+    font-weight: 900;
+}
+
+.form-error {
+    color: #C50027;
+}
+
+.text-strong{
+    font-weight: 700;
+}
+
+.error-title {
+    text-decoration: underline;
+}
+
+.sticky-section{
+    z-index: 2;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: white;
+}
+
+
+/* hide the blue outline */
+.form-control:focus {
+    outline: 0 !important;
+    border-color: initial;
+    box-shadow: none;
+}
+
+.search-bar {
+    width: 80% !important;
+    margin: 1% auto !important;
+}
+
+.search-input {
+    display: block;
+    width: 60% !important;
+    margin: 0 auto;
+}
+
+.search-input input {
+    display: block;
+    width: 100% !important;
+    padding: 5% 3% !important;
+    font-size: 1.5em;
+}
+
+.centered-section button{
+    display: block;
+    margin: 0 auto;
+    width: 20%;
+}
+
+.results {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.selected-option {
+    background-color: #D0DFFF;
+}

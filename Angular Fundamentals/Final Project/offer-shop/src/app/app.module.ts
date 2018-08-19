@@ -18,6 +18,7 @@ import { InternalServerErrorComponent } from './components/errors/error-500/500.
 import { ConnectionErrorComponent } from './components/errors/error-0/connection-error.component';
 import { AccountModule } from './components/authentication/account.module';
 import { RegisterComponent } from './components/authentication/register/register.component';
+import { AdvertModule } from './components/advert/advert.module';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { RegisterComponent } from './components/authentication/register/register
     AppRouterModule,
     AdminModule,
     AccountModule,
+    AdvertModule,
     ToastrModule.forRoot()
   ],
   providers: [

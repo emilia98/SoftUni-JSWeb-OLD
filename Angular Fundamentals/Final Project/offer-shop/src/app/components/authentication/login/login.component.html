@@ -1,1 +1,84 @@
-<div class="alert alert-success">LOGIN</div>
+<div class="container">
+    <div *ngIf="isLoading" class="row">
+        <div class="col-xs-12 col-sm-8 col-md-6 col-lg-8 col-sm-offset-2 col-md-offset-3 col-lg-offset-2" id="form">
+            <div class="loader">
+                <h1>Loading....</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-6 col-lg-8 col-sm-offset-2 col-md-offset-3 col-lg-offset-2" id="form">
+            <form [formGroup]="loginForm" (submit)="onSubmit($event)">
+                <h2>Login
+                    <small>v0.0.1</small>
+                </h2>
+
+                <div *ngIf="hasRejected || serverError" class="alert alert-light form-error text-center">
+                    <h3>{{errorMsg}}</h3>
+                </div>
+
+                <div *ngIf="hasErrors" class="alert alert-light">
+                    <div *ngIf="usernameErrors" class="form-error">
+                        <h4 class="error-title">Username: </h4>
+                        <ul>
+                            <li *ngIf="usernameErrors.required">
+                                <span class="text-strong">Username</span> is required.
+                            </li>
+                        </ul>
+                    </div>
+                    <div *ngIf="passwordErrors" class="form-error">
+                        <h4 class="error-title">Password: </h4>
+                        <ul>
+                            <li *ngIf="passwordErrors.required">
+                                <span class="text-strong">Password</span> is required.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="colorgraph">
+                <div class="form-group">
+                    <div *ngIf="username.touched && username.errors" class="form-error">
+                        <div *ngIf="username.errors.required">
+                            <span class="text-strong">Username</span> is required.
+                        </div>
+                    </div>
+
+                    <input type="text" id="username" class="form-control input-lg" formControlName="username" placeholder="Username..." tabindex="3">
+                    <div>
+                        <small class="text-muted">
+                            Symbols:
+                            <span class="content-length">{{username.value.length}}</span>
+                        </small>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <div *ngIf="password.touched && password.errors" class="form-error">
+                        <div *ngIf="password.errors.required">
+                            <span class="text-strong">Password</span> is required.
+                        </div>
+                    </div>
+                    <input type="password" id="password" class="form-control input-lg" formControlName="password" placeholder="Type password..."
+                        tabindex="3">
+                    <div>
+                        <small class="text-muted">
+                            Symbols:
+                            <span class="content-length">{{password.value.length}}</span>
+                        </small>
+                    </div>
+                </div>
+
+                <hr class="colorgraph">
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        <button type="submit" class="btn btn-primary btn-block btn-lg" [disabled]="loginForm.invalid" tabindex="8">
+                            Login
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -38,7 +38,6 @@ export class ErrorInterceptor implements HttpInterceptor {
                     if(err.status === 401) {
                         this.toastr.error('You are not authorized to do that!', 
                         'Not authorized');
-                       
                     }
                     return throwError(err);
                     

@@ -1,0 +1,155 @@
+<div class="container">
+    <div *ngIf="isLoading" class="row">
+        <div class="col-xs-12 col-sm-8 col-md-6 col-lg-8 col-sm-offset-2 col-md-offset-3 col-lg-offset-2" id="form">
+            <div class="loader">
+                <h1>Loading....</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div *ngIf="toggleLocationMenu" class="sticky-section" id="select-location">
+            <div class="row search-bar">
+                <div class="col-md-12">
+                    <div class="input-group search-input">
+                        <input class="form-control py-2 border" type="search" placeholder="Search" (input)="searchLocation($event)">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row results">
+                <div *ngFor="let location of locations" class="col-6 sol-md-3 col-lg-3">
+                    <div *ngIf="!selectedLocation || selectedLocation.id !== location.id" class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{location.name}}</h5>
+                            <p class="card-text">{{location.postCode}}</p>
+                            <button class="btn btn-primary" (click)="selectLocation(location)">Select</button>
+                        </div>
+                    </div>
+                    <div *ngIf="selectedLocation && selectedLocation.id === location.id" class="card selected-option">
+                            <div class="card-body">
+                                <h5 class="card-title">{{location.name}}</h5>
+                                <p class="card-text">{{location.postCode}}</p>
+                                <button class="btn btn-danger" (click)="diselectLocation()">Diselect</button>
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+            <div class="row centered-section">
+                <button class="btn btn-dark btn-lg" (click)="getLocation()" type="button">Close</button>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-8 col-md-6 col-lg-8 col-sm-offset-2 col-md-offset-3 col-lg-offset-2" id="form">
+            <form [formGroup]="createAdvertForm" (submit)="onSubmit($event)">
+                <h2>Create New Advert
+                    <small>v0.0.1</small>
+                </h2>
+
+                <hr class="colorgraph">
+                <div class="form-group">
+                    <h3>
+                        <label for="title">Title: </label>
+                    </h3>
+                    <input type="text" id="title" class="form-control input-lg" formControlName="title">
+                    <div>
+                        <small class="text-muted">
+                            Symbols:
+                            <span class="content-length">{{title.value.length}}</span>
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h3>
+                        <label for="price">Price: </label>
+                    </h3>
+
+                    <input type="text" id="price" class="form-control input-lg" formControlName="price">
+                </div>
+                <div class="form-group">
+                    <h4>
+                        <label for="location">Location: </label>
+                        <span *ngIf="selectedLocation && selectedLocation.name" class="badge badge-success custom-badge">{{selectedLocation.name}}</span>
+                        <span *ngIf="!selectedLocation" class="badge badge-dark custom-badge">No</span>
+                        <button class="btn btn-default btn-sm" (click)="getLocation()" type="button">Select Locations</button>
+                    </h4>
+                </div>
+
+                <div class="form-group">
+                    <h4>
+                        <label for="location">Choose images to upload: </label>
+                    </h4>
+                    <input type="file" id="img1" hidden (change)="onFileSelected($event)">
+
+                    <div class="row">
+                        <div *ngIf="!images">
+                            upload up to 12 images
+                        </div>
+                        <div *ngFor="let value of readonly;let i=index" class="col-lg-3 col-md-4 col-xs-6">
+                            <div *ngIf="!images[i]" (click)="openDialog($event, i)">
+                                {{i}}
+                                <input type="file" id="img{{i}}" hidden (change)="onFileSelected($event)">
+                                <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+                            </div>
+                            <div *ngIf="images[i]">
+                                <img class="img-fluid img-thumbnail" src="{{images[i]}}" alt="image_{{i}}">
+                                <button (click)="removeImg(i)" class="btn btn-success btn-sm">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--
+                <div class="row text-center">
+                    <div *ngIf="error" class="row alert alert-danger">
+                        {{error}}
+                    </div>
+                    <form action="#" id="formi">
+                        <div class="file-field form-group row">
+                            <div class="float-left">
+                                <label for="title">Choose images to upload: </label>
+
+                                <button type="button" class="btn btn-primary btn-sm" (click)="openDialog()">
+                                    Upload Image #1
+                                </button>
+                            </div>
+                        </div>
+                        <button type="submit" (click)="clicked()" class="btn btn-info btn-large">Submit</button>
+                    </form>
+                </div>
+                <div class="row text-center text-lg-left">
+
+                    <div *ngIf="!images">
+                        upload up to 12 images
+                    </div>
+                    <div *ngFor="let value of readonly;let i=index" class="col-lg-3 col-md-4 col-xs-6">
+                        <div *ngIf="!images[i]" (click)="openDialog($event, i)">
+                            {{i}}
+                            <input type="file" id="img{{i}}" hidden (change)="onFileSelected($event)">
+                            <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+                        </div>
+                        <div *ngIf="images[i]">
+                            <img class="img-fluid img-thumbnail" src="{{images[i]}}" alt="image_{{i}}">
+                            <button (click)="removeImg(i)" class="btn btn-success btn-sm">Remove</button>
+                        </div>
+
+
+
+                        <a href="#" class="d-block mb-4 h-100">
+
+                        </a>
+                    </div>
+                </div>
+            -->
+                <hr class="colorgraph">
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        <button type="submit" class="btn btn-primary btn-block btn-lg" tabindex="8">
+                            Create
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

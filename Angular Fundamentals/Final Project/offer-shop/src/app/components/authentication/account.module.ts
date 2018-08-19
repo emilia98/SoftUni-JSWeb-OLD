@@ -4,7 +4,7 @@ import { AccountRouterModule } from './account.routing';
 import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthenticationService } from '../../core/services/auth/authenticate.service';
-import { LoginComponent } from './login/register.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
     declarations: [

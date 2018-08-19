@@ -6,11 +6,13 @@ import { InternalServerErrorComponent } from './components/errors/error-500/500.
 import { ConnectionErrorComponent } from './components/errors/error-0/connection-error.component';
 import { AccountModule } from './components/authentication/account.module';
 import { RegisterComponent } from './components/authentication/register/register.component';
+import { AdvertModule } from './components/advert/advert.module';
 
 const routes :Routes = [
     // { path: 'admin', loadChildren : '../app/components/admin/admin.module#AdminModule'}
     { path: 'admin', component: AdminComponent, loadChildren: () => AdminModule},
     { path: 'account', loadChildren: () => AccountModule},
+    { path: 'ad', loadChildren: () => AdvertModule },
     { path: '500', pathMatch: 'full', component: InternalServerErrorComponent},
     { path: 'connection-error', pathMatch: 'full', component: ConnectionErrorComponent }
 ]
