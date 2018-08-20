@@ -1,13 +1,12 @@
 <div class="jumbotron">
     <h1 class="display-4">Welcome To Hotel System</h1>
     <p class="lead">Easy to find the best place for you</p>
-    
 </div>
 
 <div class="row">
-     <div class="col-12 col-md-12 col-lg-12">
-         <h2 class="text-center">Latest Hotels</h2>
-     </div>
+    <div class="col-12 col-md-12 col-lg-12">
+        <h2 class="text-center">Latest Hotels</h2>
+    </div>
 </div>
 <div class="row">
     {{#each hotels}}
@@ -16,7 +15,11 @@
             <img class="card-img-top" src="{{imageUrl}}" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">{{title}}</h5>
-                <a href="/hotel/{{_id}}/{{title}}" class="btn btn-primary">Go somewhere</a>
+                <a href="/hotel/{{_id}}/{{title}}" class="btn btn-primary">View Hotel</a>
+                {{#if ../isAdmin}}
+                <a href="/hotel/edit/{{_id}}" class="btn btn-success">Edit</a>
+                <a href="/hotel/delete/{{_id}}" class="btn btn-danger">Delete</a>
+                {{/if}}
             </div>
         </div>
     </div>

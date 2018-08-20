@@ -7,6 +7,13 @@
 <div class="row">
     <div class="col-12 col-md-6 col-lg-6">
         <img src="{{hotel.imageUrl}}" alt="hotel_{{hotel.title}}" />
+        <div>
+            {{#if isAdmin}}
+            <a href="/hotel/edit/{{hotel.id}}" class="btn btn-success">Edit</a>
+            <a href="/hotel/delete/{{hotel.id}}" class="btn btn-danger">Delete</a>
+            {{/if}}
+        </div>
+
     </div>
     <div class="col-12 col-md-6 col-lg-6">
         <div>
@@ -19,7 +26,7 @@
         </div>
         <div>
             <h2>Category:
-                <a href="/list/{{hotel.category}}" class="btn btn-success btn-sm">{{hotel.category}}</a>
+                <a href="/list/category/{{hotel.category}}" class="btn btn-success btn-sm">{{hotel.category}}</a>
             </h2>
         </div>
         <div>
@@ -37,11 +44,10 @@
                 <span class="badge badge-dark">{{hotel.totalLikes}}</span>
             </h2>
         </div>
-        
-        {{#if user}} 
-        {{#if hotel.isLiked}}
+
+        {{#if user}} {{#if hotel.isLiked}}
         <div>
-            
+
             <a href="/hotel/like/{{hotel.id}}" class="btn btn-danger btn-sm">Dislike</a>
         </div>
         {{else}}
@@ -50,4 +56,58 @@
         </div>
         {{/if}} {{/if}}
     </div>
+</div>
+
+{{#if user}}
+<div class="row">
+    <div class="col-12">
+        <form action="/review/send" method="post" class="form-horizontal" id="commentForm" role="form">
+            <div class="form-group">
+                <label for="email" class="col-sm-2 control-label">Comment</label>
+                <div class="col-sm-10">
+                    {{#if hasError}} {{error}} {{/if}}
+                    <input type="hidden" name="hotelId" value="{{hotel.id}}" />
+                    <textarea class="form-control" name="review" id="review" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button class="btn btn-success" type="submit" id="submitComment"> Add Review</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{{/if}}
+
+
+<div class="row">
+    {{#each reviews}}
+
+    <div class="row">
+        <div class="col-md-2">
+            <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid" />
+            <p class="text-secondary text-center">{{creationDate}}</p>
+        </div>
+        <div class="col-md-10">
+            <p>
+                <a class="float-left" href="/profile/{{username}}">
+                    <strong>{{username}}</strong>
+                </a>
+            </p>
+            <div class="clearfix"></div>
+            <p>{{text}}</p>
+            <p>
+                {{#if ../isAdmin}}
+                <a href="/review/edit/{{id}}" class="btn btn-primary btn-sm">Edit</a>
+                <a href="/review/delete/{{id}}" class="btn btn-danger btn-sm">Delete</a>
+                {{/if}}
+            </p>
+        </div>
+    </div>
+    {{else}}
+    <div class="col-12 text-center">
+        No comments to show
+    </div>
+    {{/each}}
 </div>

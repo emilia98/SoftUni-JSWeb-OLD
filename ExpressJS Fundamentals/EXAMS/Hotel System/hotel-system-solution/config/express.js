@@ -12,6 +12,8 @@ const home = require('../routes/home');
 const addHotel = require('../routes/hotel/add');
 const list = require('../routes/hotel/list');
 const hotel = require('../routes/hotel/details');
+const category = require('../routes/category');
+const review = require('../routes/review');
 
 const publicFolder = path.normalize(
   path.join(__dirname, '../', '/public')
@@ -60,4 +62,6 @@ module.exports = (app, config) => {
   app.use('/add', addHotel);
   app.use('/list', list);
   app.use('/hotel', hotel);
+  app.use('/', category); // Different from home path
+  app.use('/review', review);
 };

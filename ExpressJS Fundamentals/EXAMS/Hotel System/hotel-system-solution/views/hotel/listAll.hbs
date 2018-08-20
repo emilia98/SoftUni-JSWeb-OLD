@@ -6,10 +6,20 @@
             <div class="card-body">
                 <h5 class="card-title">{{title}}</h5>
                 <div>
-                    <h6>Views: <span class="badge badge-dark">{{views}}</span></h6>
-                    <h6>Likes:  <span class="badge badge-info">{{likes.length}}</span></h6>
+                    <h6>Views:
+                        <span class="badge badge-dark">{{views}}</span>
+                    </h6>
+                    <h6>Likes:
+                        <span class="badge badge-info">{{likes.length}}</span>
+                    </h6>
                 </div>
-                <a href="/hotel/{{_id}}/{{title}}" class="btn btn-primary">Go somewhere</a>
+
+                <a href="/hotel/{{_id}}/{{title}}" class="btn btn-primary">View Hotel</a>
+                {{#if ../isAdmin}}
+                <a href="/hotel/edit/{{_id}}" class="btn btn-success">Edit</a>
+                <a href="/hotel/delete/{{_id}}" class="btn btn-danger">Delete</a>
+                {{/if}}
+
             </div>
         </div>
     </div>

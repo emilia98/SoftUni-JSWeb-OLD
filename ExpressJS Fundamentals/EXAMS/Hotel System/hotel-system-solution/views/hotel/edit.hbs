@@ -1,0 +1,56 @@
+<div class="row">
+    <div class="col-12 col-md-12 col-sm-12">
+        <h1>Edit Hotel</h1>
+        {{#if invalidUser}}
+        <h2 class="err-msg text-center">Invalid username or/and password!</h2>
+        {{/if}} 
+        
+        {{#if hasErrors}}
+        <div class="alert alert-danger">
+            {{#if errors.title}}
+            <div>The title is required.</div>
+            {{/if}} 
+             {{#if errors.description}}
+            <div>The description is required.</div>
+            {{/if}} 
+             {{#if errors.location}}
+            <div>The location is required.</div>
+            {{/if}} 
+            {{#if errors.imageUrl}}
+            <div>The image url is required.</div>
+            {{/if}}
+            {{#if errors.category}}
+            <div>This category does not exist.</div>
+            {{/if}}
+        </div>
+        {{/if}}
+        <form action="/hotel/edit/{{data._id}}" method="POST">
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" class="form-control" id="title" name="title" value="{{data.title}}">
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <input type="text" class="form-control" id="description" name="description" value="{{data.description}}">
+            </div>
+             <div class="form-group">
+                <label for="location">Location:</label>
+                <input type="text" class="form-control" id="location" name="location" value="{{data.location}}">
+            </div>
+             <div class="form-group">
+                <label for="imageUrl">Image Url:</label>
+                <input type="text" class="form-control" id="imageUrl" name="imageUrl" value="{{data.imageUrl}}">
+            </div>
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <select id="category" name="category">
+                    <option value="{{selectedCategory._id}}" selected="true">{{selectedCategory.title}}</option>
+                    {{#each categories}}
+                      <option value="{{_id}}">{{title}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
