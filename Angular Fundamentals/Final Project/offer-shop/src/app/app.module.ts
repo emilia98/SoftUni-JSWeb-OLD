@@ -19,19 +19,17 @@ import { ConnectionErrorComponent } from './components/errors/error-0/connection
 import { AccountModule } from './components/authentication/account.module';
 import { RegisterComponent } from './components/authentication/register/register.component';
 import { AdvertModule } from './components/advert/advert.module';
+import { HeaderInterceptor } from './core/interceptors/header.interceptor';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { HomeModule } from './components/home/home.module';
+import { NavigationModule } from './components/navigation/navigation.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     InternalServerErrorComponent,
     ConnectionErrorComponent,
-    // RegisterComponent
-    //DetailsComponent,
-    //UploadComponent,
-    //ContactsComponent,
-    //AdminComponent,
-
-    //InputComponent
+    // NavigationComponent
   ],
   imports: [
     BrowserModule,
@@ -42,18 +40,26 @@ import { AdvertModule } from './components/advert/advert.module';
       apiKey: 'AIzaSyDR8Z2N52y_yH4WC5O-gw74wfthApE5xRE'
     }),
     RouterModule,
+    NavigationModule,
     AppRouterModule,
     AdminModule,
     AccountModule,
     AdvertModule,
+    HomeModule,
     ToastrModule.forRoot()
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
+      useClass: HeaderInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
       multi: true
-    }
+    },
+    
   ],
   bootstrap: [AppComponent]
 })

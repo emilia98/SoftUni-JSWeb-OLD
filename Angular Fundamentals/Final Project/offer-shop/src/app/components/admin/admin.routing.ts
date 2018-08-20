@@ -4,6 +4,7 @@ import { LocationsAllComponent } from './locations/list-all/list-all.component';
 import { CreateLocationComponent } from './locations/create/create-location.component';
 import { AdminComponent } from './admin.component';
 import { EditLocationComponent } from './locations/edit/edit-location.component';
+import { CreateCategoryComponent } from './categories/create/create-category.component';
 
 const adminRoutes :Routes = [
     { 
@@ -20,6 +21,11 @@ const adminRoutes :Routes = [
         path: 'location/edit/:name/:id',
         pathMatch: 'full',
         component: EditLocationComponent
+    },
+    {
+        path: 'category',
+        pathMatch: 'full',
+        component: CreateCategoryComponent
     }
 ];
 

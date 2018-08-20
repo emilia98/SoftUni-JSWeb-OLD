@@ -1,26 +1,111 @@
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-lg-8 col-sm-offset-2 col-md-offset-3 col-lg-offset-2" id="form">
         <form [formGroup]="createForm" (submit)="onSubmit($event)">
+
+            <div *ngIf="toggleMenuCategories" class="sticky-section" id="select-location">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h2>Categories</h2>
+                    </div>
+                </div>
+
+                <div class="row search-bar">
+                    <div class="col-md-12">
+                        <div class="input-group search-input">
+                            <input class="form-control py-2 border" type="search" placeholder="Search" (input)="searchCategory($event)">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row results">
+                    <div *ngFor="let category of categories" class="col-6 sol-md-3 col-lg-3">
+                        <div *ngIf="!selectedCategory || selectedCategory.id !== category.id" class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">{{category.title}}</h5>
+                                <p class="card-text">{{category.parentId}}</p>
+                                <button class="btn btn-primary" (click)="selectCategory(category)">Select</button>
+                            </div>
+                        </div>
+                        <div *ngIf="selectedCategory && selectedCategory.id === category.id" class="card selected-option">
+                            <div class="card-body">
+                                <h5 class="card-title">{{category.title}}</h5>
+                                <p class="card-text">{{category.parentId}}</p>
+                                <button class="btn btn-danger" (click)="removeSelection()">Deselect</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="!categories" class="col-12 sol-md-12 col-lg-12">
+                        <div class="alert alert-info">
+                            No categories to show
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row centered-section">
+                    <button class="btn btn-dark btn-lg" (click)="getCategory()" type="button">Close</button>
+                </div>
+            </div>
+
             <h2>Create Category
                 <small>v0.0.1</small>
             </h2>
             <hr class="colorgraph">
             <div class="form-group">
-                <label for="title">Title: </label>
-                <input type="text" id="title" formControlName="title" class="form-control input-lg" placeholder="Type Title..." tabindex="4">
+                <h4>
+                    <label for="title">Title: </label>
+                </h4>
+
+                <div *ngIf="title.touched && title.errors" class="form-error">
+                    <div *ngIf="title.errors.invalidLength">
+                        <span class="text-strong">Title</span> should contain
+                        <span class="text-strong">between 1 and 50 </span> characters.
+                    </div>
+                    <div *ngIf="title.errors.invalidFormat">
+                        <span class="text-strong">Title</span> should contain only
+                        <span class="text-strong">cyrillic or latins letters, digits or %, -, (, ), \, ., , \, /</span>
+                    </div>
+                </div>
+                <input type="text" id="title" formControlName="title" class="form-control input-lg">
             </div>
             <div class="form-group">
-                <label for="parent-category">Has Parent Category: </label>
-                <button *ngIf="hasParent" type="button" class="btn btn-success custom-btn" (click)="clicked()">Yes</button>
-                <button *ngIf="!hasParent" type="button" class="btn btn-danger custom-btn" (click)="clicked()">No</button>
+                <h4>
+                    <label for="parent-category">Has Parent Category: </label>
+                    <button *ngIf="hasParent" type="button" class="btn btn-success custom-btn" (click)="clicked()">Yes</button>
+                    <button *ngIf="!hasParent" type="button" class="btn btn-danger custom-btn" (click)="clicked()">No</button>
+                </h4>
             </div>
+            <div *ngIf="hasParent" class="form-group">
+                <h4>
+                    <label for="parent-category">Parent Category: </label>
+                    <span *ngIf="hasParent && selectedCategory" class="badge badge-success custom-badge">{{selectedCategory}}</span>
+                    <span *ngIf="!hasParent" class="badge badge-dark custom-badge">No</span>
+                    <button class="btn btn-default btn-sm" (click)="getCategory()" type="button">Select Category</button>
+                </h4>
+            </div>
+            <!-- Slug -->
             <div class="form-group">
-                <label for="category-slug">Category Slug: </label>
-                <input type="text" id="category-slug" formControlName="categorySlug"
-                class="form-control input-lg" placeholder="Type Slug..." tabindex="5">
+                <h4>
+                    <label for="category-slug">Category Slug: </label>
+                </h4>
+                <div *ngIf="slug.touched && slug.errors" class="form-error">
+                    <div *ngIf="slug.errors.invalidLength">
+                        <span class="text-strong">Slug</span> should contain
+                        <span class="text-strong">between 1 and 50 </span> characters.
+                    </div>
+                    <div *ngIf="slug.errors.invalidFormat">
+                        <span class="text-strong">Slug</span> should contain only
+                        <span class="text-strong">latin letters, digits and underscores.</span>
+                    </div>
+                </div>
+                <input type="text" id="category-slug" formControlName="categorySlug" class="form-control input-lg">
             </div>
+            <!-- Slug -->
+
+
             <div *ngIf="!hasParent" class="form-group">
-                <label for="icon">Icon:</label>
+                <h4>
+                    <label for="icon">Icon:</label>
+                </h4>
                 <div class="">
                     <input type="text" id="icon" formControlName="icon" class="form-control input-lg with-preview" />
                     <span class="preview" id="icon-preview">Preview</span>
@@ -38,7 +123,6 @@
                         Create
                     </button>
                 </div>
-
             </div>
         </form>
     </div>
