@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SoftUni Wiki</title>
+    <link rel="stylesheet" href="/public/styles/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/public/css/site.css" />
+</head>
+
+<body>
+    <div>
+        <aside>
+            <div class="center">
+                <img class="logo" src="/public/img/logo.png" alt="logo">
+            </div>
+
+            <nav>
+                <a href="/">Main Page</a>
+                {{#if latestArticleId}}
+                <a href="/article/details/{{latestArticleId}}">Latest Article</a>
+                {{/if}}
+                <a href="/articles">All Articles</a>
+                <form action="/search" method="GET">
+                    <input type="text" name="title">
+                    <input type="submit" value="Search">
+                </form>
+                {{#if user}}
+                <a href="/article/create">Create New Article</a>
+                {{/if}}
+            </nav>
+        </aside>
+        <div id="container">
+            {{> header}}
+            <main>
+                <h1>Welcome to SoftUni Wiki!</h1>
+                {{{body}}}
+            </main>
+            {{> footer}}
+        </div>
+    </div>
+</body>
+</html>

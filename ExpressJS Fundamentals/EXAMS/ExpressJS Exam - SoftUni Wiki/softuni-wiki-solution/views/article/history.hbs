@@ -1,0 +1,14 @@
+<section>
+    <h2>Astronomy</h2>
+    <div class="spacer">
+        <h3>Edit history</h3>
+        <ul>
+            {{#each edits}}
+             <li>
+                <a href="/article/review/edit/{{id}}">{{time}}, {{date}}</a> by
+                <span class="author">{{author}}</span>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+</section>

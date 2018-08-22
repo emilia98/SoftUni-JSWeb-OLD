@@ -1,0 +1,26 @@
+{{#if hasError}}
+<div class="alert alert-danger">
+  {{#if errors.email}}
+  <div>{{errors.email}}</div>
+  {{/if}} {{#if errors.password}}
+  <div>{{errors.password}}</div>
+  {{/if}}
+</div>
+{{/if}} {{#if invalidUser}}
+<div class="alert alert-danger text-center">
+  <h3>Invalid Credentials</h3>
+</div>
+{{/if}}
+
+<section>
+  <h2>Login</h2>
+  <div class="spacer">
+    <form action="/login" method="POST">
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="email" value="{{userData.email}}">
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" value="{{userData.value}}">
+      <input type="submit" value="Login">
+    </form>
+  </div>
+</section>
